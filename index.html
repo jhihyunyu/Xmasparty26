@@ -141,17 +141,14 @@
                     return;
                 }
 
-                // 處理試算表資料：將有 A 欄分類的內容進行分組（支援 A 欄合併儲存格向下對應 B 欄多行）
+                // 處理資料：以 A 欄作為分類，將對應的 B 欄內容歸納進去
                 let sectionsMap = {};
                 let sectionOrder = [];
                 let currentCategory = '';
 
                 data.forEach((item) => {
-                    const keys = Object.keys(item);
-                    if (keys.length < 2) return;
-                    
-                    let colA = item[keys[0]] ? String(item[keys[0]]).trim() : '';
-                    let colB = item[keys[1]] ? String(item[keys[1]]).trim() : '';
+                    let colA = item.a ? item.a.trim() : '';
+                    let colB = item.b ? item.b.trim() : '';
                     
                     if (colA) {
                         currentCategory = colA;
@@ -166,12 +163,12 @@
                     }
                 });
 
-                // 產生上方 A 欄選項按鈕與下方對應的內容卡片
-                sectionOrder.forEach((cat) => {
+                // 產生上方按鈕與下方詳細資訊卡片
+                sectionOrder.forEach((cat, index) => {
                     const contents = sectionsMap[cat];
-                    const anchorId = 'section-' + cat.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                    const anchorId = 'section-' + index;
 
-                    // 1. 上方 A 欄選項按鈕 (點擊後平滑捲動到下方)
+                    // 1. 上方 A 欄選項按鈕 (點擊後平滑捲動)
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm text-xs font-semibold uppercase tracking-wider';
