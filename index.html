@@ -9,7 +9,7 @@
     <!-- 引入 Google Fonts: Great Vibes (微草寫) 與 Cormorant Garamond (高級復古襯線體) -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- 🚀 關鍵效能優化：預先加載所有按鈕、地圖與視覺圖片 -->
+    <!-- 🚀 關鍵效能優化：預先加載所有圖片 -->
     <link rel="preload" as="image" href="./IMG_3838.jpeg">
     <link rel="preload" as="image" href="./BBC9C664-44FA-416A-8343-D27912064E4A.png">
     <link rel="preload" as="image" href="./6E12C630-4DA2-4648-977D-DE78857829E4.png">
@@ -187,7 +187,6 @@
 
             timerElem.innerHTML = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
 
-            // 計算百分比 (0% ~ 100%)
             const totalDuration = targetDate - startDate;
             const elapsed = now - startDate;
             let percentage = (elapsed / totalDuration) * 100;
@@ -261,29 +260,23 @@
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕
+                    // 1. 上方 A 欄選項按鈕 (加入 onerror 防護：若圖片讀不出來，自動變成精美文字按鈕)
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     
                     const lowerCat = cat.toLowerCase();
-                    if (lowerCat === 'intro') {
+                    let imgFileName = '';
+                    
+                    if (lowerCat === 'intro') imgFileName = '6E12C630-4DA2-4648-977D-DE78857829E4.png';
+                    else if (lowerCat === 'rundown') imgFileName = '06037048-93C9-4BBC-B7BB-EBBFFA2F8C88.png';
+                    else if (lowerCat.includes('gift')) imgFileName = '485C3729-75D0-452D-ADBE-39A69524D058.png';
+                    else if (lowerCat.includes('food')) imgFileName = '485C3729-75D0-452D-ADBE-39A69524D058.png';
+                    else if (lowerCat.includes('drink')) imgFileName = '6C40EA91-68AA-4C2D-9314-B745488970DA.png';
+                    else if (lowerCat.includes('location')) imgFileName = '52193CEA-3914-4D42-9FF6-3F4ECCF50BED.png';
+
+                    if (imgFileName) {
                         btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
-                        btn.innerHTML = `<img src="./6E12C630-4DA2-4648-977D-DE78857829E4.png" alt="Intro" class="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async">`;
-                    } else if (lowerCat === 'rundown') {
-                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
-                        btn.innerHTML = `<img src="./06037048-93C9-4BBC-B7BB-EBBFFA2F8C88.png" alt="Rundown" class="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async">`;
-                    } else if (lowerCat.includes('gift')) {
-                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
-                        btn.innerHTML = `<img src="./485C3729-75D0-452D-ADBE-39A69524D058.png" alt="Gift Exchange" class="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async">`;
-                    } else if (lowerCat.includes('food')) {
-                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
-                        btn.innerHTML = `<img src="./485C3729-75D0-452D-ADBE-39A69524D058.png" alt="Food" class="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async">`;
-                    } else if (lowerCat.includes('drink')) {
-                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
-                        btn.innerHTML = `<img src="./6C40EA91-68AA-4C2D-9314-B745488970DA.png" alt="Drinks" class="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async">`;
-                    } else if (lowerCat.includes('location')) {
-                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
-                        btn.innerHTML = `<img src="./52193CEA-3914-4D42-9FF6-3F4ECCF50BED.png" alt="Location" class="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async">`;
+                        btn.innerHTML = `<img src="./${imgFileName}" alt="${cat}" class="w-full h-auto object-cover rounded-lg" loading="lazy" decoding="async" onerror="this.parentElement.className='grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm'; this.parentElement.innerHTML='<span class=\\'serif-font italic text-base\\'>${cat}</span>';">`;
                     } else {
                         btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
                         btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
@@ -313,11 +306,11 @@
                     });
                     contentHtml += `</div>`;
 
-                    // 💡 Location 區塊自動帶入最新的地圖圖片與 Google 導航按鈕
+                    // 💡 Location 區塊地圖圖片
                     if (lowerCat.includes('location')) {
                         contentHtml += `
                             <div class="mt-3 pt-2 pl-7 space-y-3">
-                                <img src="./FA6E4555-C6CE-466D-9476-CFC74E1DE629.png" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+                                <img src="./FA6E4555-C6CE-466D-9476-CFC74E1DE629.png" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async" onerror="this.style.display='none';">
                                 <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
                                    target="_blank" 
                                    class="action-btn w-full py-2.5 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
