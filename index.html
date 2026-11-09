@@ -6,12 +6,16 @@
     <title>Christmas Party — @The Guandi</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- 引入 Google Fonts: Great Vibes (微草寫) 與 Cormorant Garamond (高級復古襯線體) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: #f6f0ea; /* 復古米色紙張背景 */
             color: #2c221e;
+        }
+        .script-font {
+            font-family: 'Great Vibes', cursive;
         }
         .serif-font {
             font-family: 'Cormorant Garamond', serif;
@@ -28,6 +32,8 @@
             transition: all 0.2s ease;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
         }
         .grid-btn:hover {
             background: #a3333d;
@@ -42,6 +48,8 @@
             background-color: #a3333d;
             color: #ffffff;
             transition: all 0.2s ease;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.08em;
         }
         .action-btn:hover {
             background-color: #822831;
@@ -53,8 +61,8 @@
     <!-- 主要容器 -->
     <main class="w-full max-w-md relative z-10 flex flex-col space-y-6 pb-16 pt-4">
         
-        <!-- 頂部副標題 -->
-        <div class="text-center text-xs tracking-widest text-[#a3333d] uppercase serif-font italic font-medium">
+        <!-- 頂部副標題 (微草寫質感) -->
+        <div class="text-center text-xl sm:text-2xl text-[#a3333d] script-font font-normal tracking-wide">
             ~ Naughty or Nice? ~
         </div>
 
@@ -65,10 +73,10 @@
 
         <!-- ⏳ 動態倒數計時區塊 -->
         <div class="retro-card rounded-xl p-4 text-center shadow-sm">
-            <div class="serif-font text-xs tracking-widest uppercase text-[#a3333d] font-semibold mb-1">
-                開趴倒數 預備備
+            <div class="script-font text-2xl text-[#a3333d] font-normal mb-1">
+                Countdown to Party
             </div>
-            <div id="countdown-timer" class="serif-font text-lg sm:text-xl font-bold text-[#5c4a42] tracking-wide">
+            <div id="countdown-timer" class="serif-font text-xl sm:text-2xl font-semibold italic text-[#5c4a42] tracking-wide">
                 計算中...
             </div>
         </div>
@@ -77,11 +85,11 @@
         <div class="text-center">
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Christmas+Party+%40The+Guandi&dates=20261219T100000Z/20261219T160000Z&details=%E5%A5%BD%E5%8F%8B%E6%B4%BE%E5%B0%8D%E6%AD%A1%E8%BF%8E%E5%85%89%E8%87%A8%EF%BC%81&location=111%E8%87%BA%E5%8C%97%E5%B8%82%E5%A3%AB%E6%9E%97%E5%8D%80%E7%A6%8F%E6%9E%97%E9%87%8C%E4%B8%AD%E5%B1%B1%E5%8C%97%E8%B7%AF%E4%BA%94%E6%AE%B5476%E8%B2%938%E6%A8%93%E4%B9%8B8B1" 
                target="_blank" 
-               class="action-btn w-full py-3 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
+               class="action-btn w-full py-3 px-4 rounded-xl shadow-sm text-sm font-semibold tracking-wider uppercase flex items-center justify-center space-x-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <span>加入 Google 行事曆</span>
+                <span class="serif-font text-base italic tracking-widest">Add to Google Calendar</span>
             </a>
         </div>
 
@@ -98,7 +106,7 @@
         </div>
 
         <!-- 頁尾資訊 -->
-        <div class="text-center text-[11px] text-[#8c786d] serif-font italic pt-4">
+        <div class="text-center text-xs text-[#8c786d] serif-font italic pt-4">
             Looking forward to celebrating with you.
         </div>
     </main>
@@ -115,7 +123,7 @@
             const timerElem = document.getElementById('countdown-timer');
 
             if (distance < 0) {
-                timerElem.innerHTML = "派對已經開始囉！ 🎉";
+                timerElem.innerHTML = "Party has started! 🎉";
                 return;
             }
 
@@ -124,7 +132,7 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            timerElem.innerHTML = `${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒`;
+            timerElem.innerHTML = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
         }
 
         setInterval(updateCountdown, 1000);
@@ -185,11 +193,11 @@
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕
+                    // 1. 上方 A 欄選項按鈕 (採用優雅襯線體)
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
-                    btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm text-xs tracking-wider uppercase';
-                    btn.innerHTML = `<span>${cat}</span>`;
+                    btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
+                    btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
                     btnContainer.appendChild(btn);
 
                     // 2. 下方資訊區塊
@@ -208,14 +216,15 @@
                         </svg>
                     `;
 
-                    let contentHtml = `<h3 class="serif-font text-base font-semibold text-[#a3333d] mb-2.5 pb-1 border-b border-[#ebdcd0] tracking-wide flex items-center">${giftSvg}<span>${cat}</span></h3>`;
+                    // 區塊標題採用優雅的微草寫 (`script-font`) 搭配精緻紅調
+                    let contentHtml = `<h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">${giftSvg}<span class="ml-1">${cat}</span></h3>`;
                     contentHtml += `<div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-7">`;
                     contents.forEach(line => {
                         contentHtml += `<div class="py-0.5">${line}</div>`;
                     });
                     contentHtml += `</div>`;
 
-                    // 💡 如果當前分類包含 Location，自動在下方嵌入地圖圖片與 Google Maps 導航按鈕
+                    // 💡 Location 區塊自動帶入地圖圖片與 Google 導航按鈕
                     if (cat.toLowerCase().includes('location')) {
                         contentHtml += `
                             <div class="mt-3 pt-2 pl-7 space-y-3">
@@ -227,7 +236,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
-                                    <span>開啟 Google 導航地圖</span>
+                                    <span class="serif-font italic text-sm tracking-widest">Open Google Maps</span>
                                 </a>
                             </div>
                         `;
