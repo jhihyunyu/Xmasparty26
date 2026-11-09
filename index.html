@@ -9,7 +9,7 @@
     <!-- 引入 Google Fonts: Great Vibes (微草寫) 與 Cormorant Garamond (高級復古襯線體) -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- 🚀 關鍵效能優化：預先加載所有按鈕與視覺圖片，讓瀏覽器秒速快取 -->
+    <!-- 🚀 關鍵效能優化：預先加載所有按鈕、地圖與視覺圖片 -->
     <link rel="preload" as="image" href="./IMG_3838.jpeg">
     <link rel="preload" as="image" href="./BBC9C664-44FA-416A-8343-D27912064E4A.png">
     <link rel="preload" as="image" href="./6E12C630-4DA2-4648-977D-DE78857829E4.png">
@@ -17,7 +17,7 @@
     <link rel="preload" as="image" href="./485C3729-75D0-452D-ADBE-39A69524D058.png">
     <link rel="preload" as="image" href="./6C40EA91-68AA-4C2D-9314-B745488970DA.png">
     <link rel="preload" as="image" href="./52193CEA-3914-4D42-9FF6-3F4ECCF50BED.png">
-    <link rel="preload" as="image" href="./531100AE-D9AF-4E38-84B3-9E091DD39747.png">
+    <link rel="preload" as="image" href="./FA6E4555-C6CE-466D-9476-CFC74E1DE629.png">
 
     <style>
         body {
@@ -261,7 +261,7 @@
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕 (加上 loading="lazy" 與 decoding="async" 優化載入)
+                    // 1. 上方 A 欄選項按鈕
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     
@@ -313,11 +313,11 @@
                     });
                     contentHtml += `</div>`;
 
-                    // 💡 Location 區塊自動帶入地圖圖片與 Google 導航按鈕
+                    // 💡 Location 區塊自動帶入最新的地圖圖片與 Google 導航按鈕
                     if (lowerCat.includes('location')) {
                         contentHtml += `
                             <div class="mt-3 pt-2 pl-7 space-y-3">
-                                <img src="./531100AE-D9AF-4E38-84B3-9E091DD39747.png" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+                                <img src="./FA6E4555-C6CE-466D-9476-CFC74E1DE629.png" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
                                 <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
                                    target="_blank" 
                                    class="action-btn w-full py-2.5 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
