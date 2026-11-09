@@ -102,7 +102,7 @@
             </div>
         </div>
 
-        <!-- 👇 Google 試算表欄位動態生成的方框按鈕區塊 -->
+        <!-- 👇 Google 試算表資料動態生成的方框按鈕區塊 -->
         <div id="dynamic-menu-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
             <!-- 載入中提示 -->
             <div class="col-span-full text-center text-xs text-slate-500 font-mono py-4">
@@ -132,11 +132,14 @@
                 }
 
                 data.forEach((item) => {
+                    // 自動抓取物件中的第一個屬性值（確保絕對能抓到文字）
+                    const keys = Object.keys(item);
+                    const textValue = keys.length > 0 ? item[keys[0]] : '';
+
                     const btn = document.createElement('a');
-                    // 將 item.title 改為 item.Intro
-                    btn.href = `#${item.Intro ? item.Intro.trim().toLowerCase() : ''}`;
+                    btn.href = `#${textValue ? String(textValue).trim().toLowerCase() : ''}`;
                     btn.className = 'grid-btn p-3 rounded text-center flex items-center justify-center min-h-[44px] shadow-sm';
-                    btn.innerHTML = `<span class="text-xs font-mono tracking-wider text-slate-200 font-semibold uppercase">${item.Intro || ''}</span>`;
+                    btn.innerHTML = `<span class="text-xs font-mono tracking-wider text-slate-200 font-semibold uppercase">${textValue || ''}</span>`;
                     container.appendChild(btn);
                 });
             })
