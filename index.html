@@ -61,7 +61,7 @@
             background-color: #f0e6dc;
             border: 1px solid #d9ccbe;
             border-radius: 9999px;
-            overflow: visible; /* 允許聖誕老人稍微超出跑道邊緣 */
+            overflow: visible;
             margin-top: 14px;
         }
         .countdown-bar-fill {
@@ -71,7 +71,7 @@
             transition: width 1s linear;
             border-radius: 9999px;
         }
-        /* 跑道上的聖誕老人圖片 (對應新圖檔) */
+        /* 跑道上的聖誕老人圖片 */
         .running-santa-img {
             position: absolute;
             top: -26px;
@@ -114,7 +114,7 @@
             </div>
             <!-- 跑道與進度條 -->
             <div class="countdown-track w-full shadow-inner">
-                <!-- 聖誕老人跑步圖片 (已對應新圖檔 BBC9C664-44FA-416A-8343-D27912064E4A.png) -->
+                <!-- 聖誕老人跑步圖片 (BBC9C664-44FA-416A-8343-D27912064E4A.png) -->
                 <img id="santa-runner" src="./BBC9C664-44FA-416A-8343-D27912064E4A.png" alt="Running Santa" class="running-santa-img" style="left: 0%;">
                 <!-- 內裝進度條 -->
                 <div id="countdown-bar" class="countdown-bar-fill"></div>
@@ -252,11 +252,17 @@
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕
+                    // 1. 上方 A 欄選項按鈕 (若分類名稱為 Intro，自動替換為圖片按鈕)
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
-                    btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
-                    btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
+                    
+                    if (cat.toLowerCase() === 'intro') {
+                        btn.className = 'grid-btn p-1.5 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm overflow-hidden';
+                        btn.innerHTML = `<img src="./0061FE11-7F56-4D22-9479-087E7530B637.png" alt="Intro" class="w-full h-auto max-h-[38px] object-contain rounded">`;
+                    } else {
+                        btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
+                        btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
+                    }
                     btnContainer.appendChild(btn);
 
                     // 2. 下方資訊區塊
