@@ -58,7 +58,7 @@
             ~ Naughty or Nice? ~
         </div>
 
-        <!-- 主視覺封面圖片（IMG_3838.jpeg） -->
+        <!-- 主視覺封面圖片 -->
         <div class="retro-card rounded-2xl p-2 sm:p-3 shadow-xl overflow-hidden text-center">
             <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
         </div>
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <!-- 👇 下方詳細資訊區塊（以 A 欄為標題、B 欄為內容，若為 Location 則會自動在最後方帶入新上傳的地圖圖片） -->
+        <!-- 👇 下方詳細資訊區塊 -->
         <div id="details-container" class="space-y-4 pt-2">
             <!-- 動態載入的詳細資訊 -->
         </div>
@@ -215,11 +215,20 @@
                     });
                     contentHtml += `</div>`;
 
-                    // 💡 自動判斷：若分類名稱包含 Location，則在下方結尾處嵌入你剛上傳的圖檔
+                    // 💡 如果當前分類包含 Location，自動在下方嵌入地圖圖片與 Google Maps 導航按鈕
                     if (cat.toLowerCase().includes('location')) {
                         contentHtml += `
-                            <div class="mt-3 pt-2 pl-7">
+                            <div class="mt-3 pt-2 pl-7 space-y-3">
                                 <img src="./531100AE-D9AF-4E38-84B3-9E091DD39747.png" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]">
+                                <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
+                                   target="_blank" 
+                                   class="action-btn w-full py-2.5 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>開啟 Google 導航地圖</span>
+                                </a>
                             </div>
                         `;
                     }
