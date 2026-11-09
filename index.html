@@ -25,21 +25,6 @@
             border: 1px solid #e7dcd1;
             box-shadow: 0 10px 30px rgba(120, 90, 70, 0.08);
         }
-        .grid-btn {
-            background: #f4ece4;
-            border: 1px solid #d9ccbe;
-            color: #2c221e;
-            transition: all 0.2s ease;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-        }
-        .grid-btn:hover {
-            background: #a3333d;
-            color: #ffffff;
-            border-color: #a3333d;
-        }
         .info-section {
             background: #fbf8f5;
             border: 1px solid #e7dcd1;
@@ -251,7 +236,7 @@
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕
+                    // 1. 上方 A 欄選項按鈕 (對應各分類圖片)
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     
@@ -262,6 +247,18 @@
                     } else if (lowerCat === 'rundown') {
                         btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
                         btn.innerHTML = `<img src="./06037048-93C9-4BBC-B7BB-EBBFFA2F8C88.png" alt="Rundown" class="w-full h-auto object-cover rounded-lg">`;
+                    } else if (lowerCat.includes('gift')) {
+                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
+                        btn.innerHTML = `<img src="./485C3729-75D0-452D-ADBE-39A69524D058.png" alt="Gift Exchange" class="w-full h-auto object-cover rounded-lg">`;
+                    } else if (lowerCat.includes('food')) {
+                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
+                        btn.innerHTML = `<img src="./485C3729-75D0-452D-ADBE-39A69524D058.png" alt="Food" class="w-full h-auto object-cover rounded-lg">`;
+                    } else if (lowerCat.includes('drink')) {
+                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
+                        btn.innerHTML = `<img src="./6C40EA91-68AA-4C2D-9314-B745488970DA.png" alt="Drinks" class="w-full h-auto object-cover rounded-lg">`;
+                    } else if (lowerCat.includes('location')) {
+                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
+                        btn.innerHTML = `<img src="./52193CEA-3914-4D42-9FF6-3F4ECCF50BED.png" alt="Location" class="w-full h-auto object-cover rounded-lg">`;
                     } else {
                         btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
                         btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
