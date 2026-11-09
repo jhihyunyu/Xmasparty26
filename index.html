@@ -24,6 +24,17 @@
         .ribbon-text {
             color: #a3333d; /* 手繪紅 */
         }
+        .grid-btn {
+            background: #f4ece4;
+            border: 1px solid #d9ccbe;
+            color: #2c221e;
+            transition: all 0.2s ease;
+        }
+        .grid-btn:hover {
+            background: #a3333d;
+            color: #ffffff;
+            border-color: #a3333d;
+        }
         .info-section {
             background: #fbf8f5;
             border: 1px solid #e7dcd1;
@@ -60,7 +71,6 @@
             <!-- 華麗蠟筆畫風格聖誕樹 (SVG 藝術創作) -->
             <div class="my-5 flex justify-center">
                 <svg class="w-40 h-40 sm:w-48 sm:h-48 drop-shadow-md" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- 蠟筆畫質感濾鏡效果模擬 -->
                     <!-- 樹幹 -->
                     <rect x="92" y="155" width="16" height="30" fill="#5c3a21" rx="2"/>
                     <!-- 樹身層疊 (粉彩蠟筆多層次綠色) -->
@@ -101,12 +111,16 @@
             </div>
         </div>
 
+        <!-- 👇 Google 試算表 A 欄動態生成的導覽按鈕區塊（已保留） -->
+        <div id="dynamic-menu-grid" class="grid grid-cols-2 gap-2.5 pt-1">
+            <div class="col-span-full text-center text-xs text-[#7a685e] font-mono py-3">
+                Loading menu...
+            </div>
+        </div>
+
         <!-- 👇 下方詳細資訊區塊（以 A 欄為標題、B 欄為內容，前方帶有不同顏色的禮物盒圖示） -->
         <div id="details-container" class="space-y-4 pt-2">
-            <!-- 載入中提示 -->
-            <div class="text-center text-xs text-[#7a685e] font-mono py-4">
-                Loading event details...
-            </div>
+            <!-- 動態載入的詳細資訊會呈現在這裡 -->
         </div>
 
         <!-- 頁尾資訊 -->
@@ -115,7 +129,7 @@
         </div>
     </main>
 
-    <!-- Google 試算表資料串接與動態生成腳本 -->
+    <!-- Google 試算表資料串接與互動腳本 -->
     <script>
         const apiURL = 'https://script.google.com/macros/s/AKfycbyxG_hOTI6X2bCDWVs3y62peCIqg52U9EMGDbpEysqdfu6MiEFSFFb9ZN9mqJ0eb3vf/exec';
 
@@ -132,11 +146,14 @@
         fetch(apiURL)
             .then(response => response.json())
             .then(data => {
+                const btnContainer = document.getElementById('dynamic-menu-grid');
                 const detailsContainer = document.getElementById('details-container');
+                
+                btnContainer.innerHTML = '';
                 detailsContainer.innerHTML = '';
                 
                 if (!data || data.length === 0) {
-                    detailsContainer.innerHTML = '<div class="text-center text-xs text-[#7a685e]">No records found</div>';
+                    btnContainer.innerHTML = '<div class="col-span-full text-center text-xs text-[#7a685e]">No records found</div>';
                     return;
                 }
 
@@ -162,15 +179,24 @@
                     }
                 });
 
-                // 產生下方詳細資訊卡片（每個標題前方搭配不同顏色的禮物盒圖示）
+                // 產生上方按鈕與下方詳細資訊卡片
                 sectionOrder.forEach((cat, index) => {
                     const contents = sectionsMap[cat];
-                    const colorScheme = giftColors[index % giftColors.length]; // 循環取不同顏色
+                    const anchorId = 'section-' + index;
+                    const colorScheme = giftColors[index % giftColors.length];
 
+                    // 1. 上方 A 欄選項按鈕 (點擊後平滑捲動)
+                    const btn = document.createElement('a');
+                    btn.href = `#${anchorId}`;
+                    btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm text-xs font-semibold uppercase tracking-wider';
+                    btn.innerHTML = `<span>${cat}</span>`;
+                    btnContainer.appendChild(btn);
+
+                    // 2. 下方資訊區塊 (以 A 欄為標題，B 欄為內容列表)
                     const sectionCard = document.createElement('div');
-                    sectionCard.className = 'info-section rounded-xl p-4 shadow-sm';
+                    sectionCard.id = anchorId;
+                    sectionCard.className = 'info-section rounded-xl p-4 shadow-sm scroll-mt-6';
                     
-                    // 禮物盒 SVG 圖示（套用不同配色）
                     const giftSvg = `
                         <svg class="w-5 h-5 inline-block mr-2 -mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 12V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V12H20Z" fill="${colorScheme.box}" stroke="#2c221e" stroke-width="1.5"/>
@@ -195,7 +221,7 @@
             })
             .catch(error => {
                 console.error('Failed to load sheet data:', error);
-                document.getElementById('details-container').innerHTML = '<div class="text-center text-xs text-red-600">Error loading database</div>';
+                document.getElementById('dynamic-menu-grid').innerHTML = '<div class="col-span-full text-center text-xs text-red-600">Error loading database</div>';
             });
     </script>
 </body>
