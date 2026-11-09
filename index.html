@@ -24,15 +24,6 @@
             padding: 0.25rem 0.5rem;
             border: 1px solid #22c55e;
         }
-        .chem-box-sm {
-            background-color: #14532d;
-            color: white;
-            font-family: monospace;
-            font-size: 0.65rem;
-            padding: 0.1rem 0.3rem;
-            border: 1px solid #22c55e;
-            display: inline-block;
-        }
         .grid-btn {
             background: rgba(15, 23, 42, 0.8);
             border: 1px solid #334155;
@@ -127,7 +118,6 @@
 
     <!-- Google 試算表資料串接與方框自動生成腳本 -->
     <script>
-        // 已代入你的 Google Apps Script 網頁應用程式 URL
         const apiURL = 'https://script.google.com/macros/s/AKfycbyxG_hOTI6X2bCDWVs3y62peCIqg52U9EMGDbpEysqdfu6MiEFSFFb9ZN9mqJ0eb3vf/exec';
 
         fetch(apiURL)
@@ -141,7 +131,7 @@
                     return;
                 }
 
-                data.forEach((item, index) => {
+                data.forEach((item) => {
                     const btn = document.createElement('a');
                     btn.href = `#${item.title.toLowerCase()}`;
                     btn.className = 'grid-btn p-3 rounded text-center flex items-center justify-center min-h-[44px] shadow-sm';
