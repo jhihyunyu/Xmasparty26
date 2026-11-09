@@ -54,6 +54,22 @@
         .action-btn:hover {
             background-color: #822831;
         }
+        /* 倒數進度條外框與特效 */
+        .countdown-bar-container {
+            background-color: #f0e6dc;
+            border: 1px solid #d9ccbe;
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+            height: 24px;
+        }
+        .countdown-bar-fill {
+            background: linear-gradient(90deg, #a3333d 0%, #c2414d 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 1s linear;
+            border-radius: 9999px;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start p-4 sm:p-6 relative overflow-x-hidden">
@@ -71,13 +87,18 @@
             <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
         </div>
 
-        <!-- ⏳ 動態倒數計時區塊 -->
-        <div class="retro-card rounded-xl p-4 text-center shadow-sm">
-            <div class="script-font text-2xl text-[#a3333d] font-normal mb-1">
+        <!-- ⏳ 動態倒數計時與 Progress Bar 區塊 -->
+        <div class="retro-card rounded-xl p-4 text-center shadow-sm space-y-2.5">
+            <div class="script-font text-2xl text-[#a3333d] font-normal">
                 Countdown to Party
             </div>
-            <div id="countdown-timer" class="serif-font text-xl sm:text-2xl font-semibold italic text-[#5c4a42] tracking-wide">
+            <!-- 倒數數字顯示 -->
+            <div id="countdown-timer" class="serif-font text-lg sm:text-xl font-semibold italic text-[#5c4a42] tracking-wide">
                 計算中...
+            </div>
+            <!-- 進度條 Bar -->
+            <div class="countdown-bar-container w-full shadow-inner">
+                <div id="countdown-bar" class="countdown-bar-fill"></div>
             </div>
         </div>
 
@@ -111,19 +132,22 @@
         </div>
     </main>
 
-    <!-- 倒數計時與試算表串接腳本 -->
+    <!-- 倒數計時、進度條與試算表串接腳本 -->
     <script>
-        // ⏳ 倒數計時邏輯 (目標時間: 2026年12月19日 18:00:00)
+        // ⏳ 倒數計時與進度條邏輯 (設定一個基準總天數，例如距離派對 90 天前開始計算進度)
         const targetDate = new Date('2026-12-19T18:00:00').getTime();
+        const startDate = new Date('2026-09-20T00:00:00').getTime(); // 基準起始日
 
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             const timerElem = document.getElementById('countdown-timer');
+            const barElem = document.getElementById('countdown-bar');
 
             if (distance < 0) {
                 timerElem.innerHTML = "Party has started! 🎉";
+                if (barElem) barElem.style.width = '100%';
                 return;
             }
 
@@ -133,6 +157,17 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             timerElem.innerHTML = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
+
+            // 計算進度條百分比 (隨時間推進增加)
+            const totalDuration = targetDate - startDate;
+            const elapsed = now - startDate;
+            let percentage = (elapsed / totalDuration) * 100;
+            if (percentage < 0) percentage = 0;
+            if (percentage > 100) percentage = 100;
+
+            if (barElem) {
+                barElem.style.width = percentage + '%';
+            }
         }
 
         setInterval(updateCountdown, 1000);
@@ -193,7 +228,7 @@
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕 (採用優雅襯線體)
+                    // 1. 上方 A 欄選項按鈕
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
@@ -216,7 +251,6 @@
                         </svg>
                     `;
 
-                    // 區塊標題採用優雅的微草寫 (`script-font`) 搭配精緻紅調
                     let contentHtml = `<h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">${giftSvg}<span class="ml-1">${cat}</span></h3>`;
                     contentHtml += `<div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-7">`;
                     contents.forEach(line => {
