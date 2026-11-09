@@ -3,127 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XMAS — CLANDESTINE OPERATION</title>
+    <title>Christmas Party — @The Guandi</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #060b11;
-            color: #f8fafc;
+            background-color: #f6f0ea; /* 復古米色紙張背景 */
+            color: #2c221e;
         }
-        .chem-box {
-            background-color: #991b1b;
-            color: #f8fafc;
-            font-family: monospace;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.25rem 0.5rem;
-            border: 1px solid #ef4444;
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+        .serif-font {
+            font-family: 'Cormorant Garamond', serif;
         }
-        .xmas-green-box {
-            background-color: #064e3b;
-            color: #34d399;
-            border: 1px solid #059669;
+        .retro-card {
+            background-color: #fbf8f5;
+            border: 1px solid #e7dcd1;
+            box-shadow: 0 10px 30px rgba(120, 90, 70, 0.08);
+        }
+        .ribbon-text {
+            color: #a3333d; /* 手繪紅 */
+        }
+        .tree-green {
+            color: #4a6b5d; /* 復古聖誕綠 */
         }
         .grid-btn {
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid #1e293b;
-            transition: all 0.2s;
+            background: #f4ece4;
+            border: 1px solid #d9ccbe;
+            color: #2c221e;
+            transition: all 0.2s ease;
         }
         .grid-btn:hover {
-            border-color: #ef4444;
-            background: rgba(153, 27, 27, 0.2);
+            background: #a3333d;
+            color: #ffffff;
+            border-color: #a3333d;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start p-4 sm:p-6 relative overflow-x-hidden">
 
-    <!-- 背景暗色聖誕燈光暈與質感濾鏡 -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-950/30 via-[#060b11] to-black opacity-90 pointer-events-none"></div>
-
     <!-- 主要容器 -->
-    <main class="w-full max-w-md relative z-10 flex flex-col space-y-4 pb-12">
+    <main class="w-full max-w-md relative z-10 flex flex-col space-y-5 pb-12 pt-4">
         
-        <!-- 頂部標題資訊 -->
-        <div class="text-center text-xs tracking-widest text-red-400/80 uppercase py-1 font-mono">
-            ★ XMAS — CLANDESTINE OPERATION ★
+        <!-- 頂部副標題 -->
+        <div class="text-center text-xs tracking-widest text-[#a3333d] uppercase serif-font italic font-medium">
+            ~ Naughty or Nice? ~
         </div>
 
-        <!-- 主視覺卡片 -->
-        <div class="bg-slate-900/85 border border-red-900/30 rounded-2xl p-5 shadow-2xl relative overflow-hidden backdrop-blur-md">
+        <!-- 主視覺邀請函卡片 -->
+        <div class="retro-card rounded-2xl p-6 sm:p-8 relative overflow-hidden text-center">
             
-            <!-- 仿元素週期表的暗色聖誕風格標題（已將 31 改為禮物盒圖示） -->
-            <div class="text-center my-4">
-                <div class="flex items-center justify-center space-x-1.5 text-4xl sm:text-5xl font-extrabold tracking-tight mb-2">
-                    <span class="chem-box text-2xl sm:text-3xl px-2.5 py-1">
-                        <!-- 禮物盒 SVG 圖示 -->
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 12v10H4V12M2 7h20v5H2V7zm10 0V4m0 3h3m-3 0H9" />
-                        </svg>
-                    </span>
-                    <span class="text-white">Chri</span>
-                    <span class="text-red-500 font-light">stmas</span>
-                </div>
-                <div class="flex items-center justify-center space-x-1.5 text-3xl sm:text-4xl font-extrabold tracking-tight">
-                    <span class="chem-box xmas-green-box text-xl sm:text-2xl">12.19</span>
-                    <span class="text-white">Night</span>
+            <!-- 裝飾性頂部手繪感蝴蝶結示意 -->
+            <div class="flex justify-between items-center px-2 mb-2 text-[#a3333d] opacity-80">
+                <span class="serif-font text-lg">❦</span>
+                <span class="text-xs font-mono tracking-widest uppercase">Christmas Party</span>
+                <span class="serif-font text-lg">❦</span>
+            </div>
+
+            <!-- 標題：Christmas Party -->
+            <div class="my-4">
+                <h1 class="serif-font text-4xl sm:text-5xl font-semibold italic ribbon-text tracking-wide leading-tight">
+                    Christmas Party
+                </h1>
+            </div>
+
+            <!-- 聖誕樹小圖示 / 裝飾 -->
+            <div class="my-4 flex justify-center">
+                <div class="w-12 h-12 rounded-full bg-[#f0e6dc] flex items-center justify-center tree-green shadow-inner">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
                 </div>
             </div>
 
-            <!-- 機密聖誕標籤 -->
-            <div class="flex justify-center my-3">
-                <span class="bg-red-950/90 text-red-400 border border-red-600/60 text-[10px] tracking-widest px-3 py-0.5 font-mono uppercase transform -rotate-1 shadow-sm">
-                    TOP SECRET ・ SILENT NIGHT EYES ONLY
-                </span>
-            </div>
-
-            <!-- 副標題與資訊 -->
-            <div class="text-center space-y-2 my-4">
-                <p class="text-xs font-mono text-red-400 tracking-wider">
-                    A DARK HOLIDAY GATHERING // TAIPEI, TAIWAN
+            <!-- 時間與日期資訊 (對應圖片中的格式) -->
+            <div class="my-4 py-2 border-t border-b border-[#ebdcd0]">
+                <p class="serif-font text-base sm:text-lg tracking-wider text-[#5c4a42]">
+                    December &nbsp;|&nbsp; 19th &nbsp;|&nbsp; 18:00-24:00
                 </p>
-                
-                <div class="grid grid-cols-2 gap-2 pt-2">
-                    <div class="border border-slate-800 bg-slate-950/60 p-2 text-center rounded">
-                        <div class="text-[10px] text-slate-500 font-mono">DATE</div>
-                        <div class="text-xs font-mono text-red-200">SATURDAY ・ 19 DEC 2026</div>
-                    </div>
-                    <div class="border border-slate-800 bg-slate-950/60 p-2 text-center rounded">
-                        <div class="text-[10px] text-slate-500 font-mono">TIME</div>
-                        <div class="text-xs font-mono text-red-200">20:00 — 04:00</div>
-                    </div>
-                </div>
-
-                <div class="border border-slate-800 bg-slate-950/60 p-2 text-left rounded">
-                    <div class="text-[10px] text-slate-500 font-mono">LOCATION</div>
-                    <div class="text-xs font-mono text-red-200">官邸 the GUANDI</div>
-                </div>
             </div>
 
-            <!-- 狀態標題 -->
-            <div class="text-center pt-2 pb-1">
-                <h2 class="text-sm font-mono tracking-widest text-red-500 font-bold uppercase animate-pulse">
-                    OPERATION: MERRY XMAS IN PROGRESS
-                </h2>
+            <!-- 地點資訊 -->
+            <div class="mt-4 space-y-1">
+                <div class="serif-font text-lg font-semibold text-[#a3333d] tracking-wide">
+                    @The Guandi
+                </div>
+                <div class="text-[11px] text-[#7a685e] leading-relaxed px-2 font-light">
+                    111臺北市士林區福林里中山北路五段476號8樓之8B1
+                </div>
             </div>
         </div>
 
         <!-- 👇 Google 試算表資料動態生成的方框按鈕區塊 -->
         <div id="dynamic-menu-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
             <!-- 載入中提示 -->
-            <div class="col-span-full text-center text-xs text-slate-500 font-mono py-4">
-                LOADING DATABASE FROM SHEETS...
+            <div class="col-span-full text-center text-xs text-[#7a685e] font-mono py-4">
+                Loading invitation details...
             </div>
         </div>
 
         <!-- 頁尾資訊 -->
-        <div class="text-center text-[10px] text-slate-600 font-mono pt-4">
-            ♪ CAROL OF THE BELLS (DARK REMIX)
+        <div class="text-center text-[11px] text-[#8c786d] serif-font italic pt-2">
+            Looking forward to celebrating with you.
         </div>
     </main>
 
@@ -138,25 +119,24 @@
                 container.innerHTML = ''; // 清空載入中提示
                 
                 if (!data || data.length === 0) {
-                    container.innerHTML = '<div class="col-span-full text-center text-xs text-slate-500 font-mono">NO RECORDS FOUND</div>';
+                    container.innerHTML = '<div class="col-span-full text-center text-xs text-[#7a685e]">No records found</div>';
                     return;
                 }
 
                 data.forEach((item) => {
-                    // 自動抓取物件中的第一個屬性值
                     const keys = Object.keys(item);
                     const textValue = keys.length > 0 ? item[keys[0]] : '';
 
                     const btn = document.createElement('a');
                     btn.href = `#${textValue ? String(textValue).trim().toLowerCase() : ''}`;
-                    btn.className = 'grid-btn p-3 rounded text-center flex items-center justify-center min-h-[44px] shadow-sm';
-                    btn.innerHTML = `<span class="text-xs font-mono tracking-wider text-slate-200 font-semibold uppercase">${textValue || ''}</span>`;
+                    btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm text-xs font-medium tracking-wide';
+                    btn.innerHTML = `<span>${textValue || ''}</span>`;
                     container.appendChild(btn);
                 });
             })
             .catch(error => {
                 console.error('Failed to load sheet data:', error);
-                document.getElementById('dynamic-menu-grid').innerHTML = '<div class="col-span-full text-center text-xs text-red-500 font-mono">ERROR LOADING DATABASE</div>';
+                document.getElementById('dynamic-menu-grid').innerHTML = '<div class="col-span-full text-center text-xs text-red-600">Error loading database</div>';
             });
     </script>
 </body>
