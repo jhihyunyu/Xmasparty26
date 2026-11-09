@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X’mas 趴26 🎄 官方邀請函</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-x-hidden">
+
+    <!-- 背景裝飾光晕 -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- 主要容器 -->
+    <main class="w-full max-w-md glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative z-10 text-center">
+        
+        <!-- 標題區域 -->
+        <div class="mb-6">
+            <span class="inline-block bg-red-500/20 text-red-400 text-xs font-semibold px-3 py-1 rounded-full mb-3 border border-red-500/30">
+                ✨ 年度盛會・Special Event
+            </span>
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-wider text-white mb-2">
+                X’mas 趴 26
+            </h1>
+            <p class="text-slate-400 text-sm">一年一度最期待的溫馨聚會，邀請你一同參與！</p>
+        </div>
+
+        <!-- 活動資訊卡 -->
+        <div class="space-y-4 text-left mb-8">
+            <div class="flex items-center space-x-4 p-3 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+                <span class="text-2xl">📅</span>
+                <div>
+                    <div class="text-xs text-slate-400">活動日期</div>
+                    <div class="text-sm font-medium text-slate-200">2026年 12月 (近期公布精確時間)</div>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 p-3 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+                <span class="text-2xl">📍</span>
+                <div>
+                    <div class="text-xs text-slate-400">活動地點</div>
+                    <div class="text-sm font-medium text-slate-200">秘密基地 / 溫馨聚所</div>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 p-3 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+                <span class="text-2xl">🎁</span>
+                <div>
+                    <div class="text-xs text-slate-400">重頭戲</div>
+                    <div class="text-sm font-medium text-slate-200">交換禮物環節 (規則另行通知)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 互動按鈕 -->
+        <div class="space-y-3">
+            <a href="https://maps.google.com" target="_blank" class="block w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-xl transition shadow-lg shadow-emerald-900/30 text-center text-sm">
+                🗺️ 查看活動地圖導航
+            </a>
+            <a href="#rsvp" onclick="alert('請直接向主辦人回覆出席狀況喔！')" class="block w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-xl transition border border-slate-700 text-center text-sm">
+                💬 我要報名 / 聯繫主辦
+            </a>
+        </div>
+
+        <!-- 頁尾 -->
+        <div class="mt-8 text-xs text-slate-500">
+            &copy; 2026 Xmasparty26. All rights reserved.
+        </div>
+    </main>
+
+</body>
+</html>
