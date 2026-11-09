@@ -57,12 +57,13 @@
         /* 倒數進度條外框與特效 */
         .countdown-track {
             position: relative;
-            height: 28px;
+            height: 24px;
             background-color: #f0e6dc;
             border: 1px solid #d9ccbe;
             border-radius: 9999px;
-            overflow: hidden; /* 確保聖誕老人不會跑出軌道外面 */
-            margin-top: 14px;
+            overflow: visible; /* 允許聖誕老人完整露出來不被切掉 */
+            margin-top: 18px;
+            margin-bottom: 6px;
         }
         .countdown-bar-fill {
             background: linear-gradient(90deg, #a3333d 0%, #c2414d 100%);
@@ -71,16 +72,16 @@
             transition: width 1s linear;
             border-radius: 9999px;
         }
-        /* 跑道上的聖誕老人圖片 */
+        /* 跑道上的聖誕老人圖片調整 */
         .running-santa-img {
             position: absolute;
-            top: -24px;
+            top: -34px; /* 往上移動，讓頭部完整呈現 */
             transform: translateX(-50%);
-            width: 42px;
+            width: 48px;
             height: auto;
             transition: left 1s linear;
             filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
-            z-index: 10;
+            z-index: 20;
         }
     </style>
 </head>
@@ -186,8 +187,8 @@
                 barElem.style.width = percentage + '%';
             }
             if (santaElem) {
-                // 限制聖誕老人位置在 2% 到 98% 之間，避免跑出邊框外
-                let santaPos = Math.max(2, Math.min(98, percentage));
+                // 限制聖誕老人位置在 3% 到 97% 之間，避免頭部貼齊邊緣時超出卡片外
+                let santaPos = Math.max(3, Math.min(97, percentage));
                 santaElem.style.left = santaPos + '%';
             }
         }
