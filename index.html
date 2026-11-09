@@ -41,7 +41,7 @@
         </div>
 
         <!-- 活動資訊卡 -->
-        <div class="space-y-4 text-left mb-8">
+        <div class="space-y-4 text-left mb-6">
             <div class="flex items-center space-x-4 p-3 rounded-2xl bg-slate-800/50 border border-slate-700/50">
                 <span class="text-2xl">📅</span>
                 <div>
@@ -67,6 +67,11 @@
             </div>
         </div>
 
+        <!-- 從 Google 試算表 A 欄動態載入的選單按鈕容器 -->
+        <div id="menu-container" class="space-y-3 mb-6">
+            <div class="text-xs text-slate-400 py-2">正在載入試算表選單...</div>
+        </div>
+
         <!-- 互動按鈕 -->
         <div class="space-y-3">
             <a href="https://maps.google.com" target="_blank" class="block w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-xl transition shadow-lg shadow-emerald-900/30 text-center text-sm">
@@ -83,5 +88,34 @@
         </div>
     </main>
 
+    <!-- Google 試算表資料抓取與動態按鈕生成腳本 -->
+    <script>
+        // ⚠️ 請把下方引號內的網址換成你的 Google Apps Script 網頁應用程式 URL
+        const apiURL = '請替換為你的Apps_Script網址';
+
+        fetch(apiURL)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('menu-container');
+                container.innerHTML = ''; // 清空載入中提示
+                
+                if (data.length === 0) {
+                    container.innerHTML = '<div class="text-xs text-slate-500">目前沒有選單內容</div>';
+                    return;
+                }
+
+                data.forEach(item => {
+                    const btn = document.createElement('a');
+                    btn.href = `#${item.title.toLowerCase()}`;
+                    btn.className = 'block w-full py-3 px-4 bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-medium rounded-xl transition border border-slate-700 text-center text-sm shadow-md';
+                    btn.textContent = `✨ ${item.title}`;
+                    container.appendChild(btn);
+                });
+            })
+            .catch(error => {
+                console.error('載入失敗:', error);
+                document.getElementById('menu-container').innerHTML = '<div class="text-xs text-red-400">無法載入試算表選單</div>';
+            });
+    </script>
 </body>
 </html>
