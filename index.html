@@ -60,14 +60,14 @@
             filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
             z-index: 20;
         }
-        /* 按鈕圖片強制控制尺寸與流暢顯示，避免排版跳動 */
+        /* 💡 修正：使用 contain 讓整張按鈕圖片完整顯示，上下左右絕不被卡掉 */
         .menu-btn-img {
             width: 100%;
-            height: 52px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            height: auto;
+            object-fit: contain;
+            display: block;
             transition: transform 0.15s ease;
+            filter: drop-shadow(0 2px 4px rgba(120, 90, 70, 0.15));
         }
         .menu-btn-img:active {
             transform: scale(0.97);
@@ -282,7 +282,7 @@
                     if (lowerCat.includes('location')) {
                         contentHtml += `
                             <div class="mt-3 pt-2 pl-7 space-y-3">
-                                <img src="./FA6E4555-C6CE-466D-9476-CFC74E1DE629.png" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+                                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
                                 <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
                                    target="_blank" 
                                    class="action-btn w-full py-2.5 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
