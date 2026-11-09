@@ -50,9 +50,9 @@
             ~ Naughty or Nice? ~
         </div>
 
-        <!-- 主視覺封面圖片 -->
+        <!-- 主視覺封面圖片（已對應你剛上傳的 IMG_3838.jpeg） -->
         <div class="retro-card rounded-2xl p-2 sm:p-3 shadow-xl overflow-hidden text-center">
-            <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=800&q=80" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]" id="invitation-cover">
+            <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
         </div>
 
         <!-- 👇 Google 試算表 A 欄動態生成的導覽按鈕區塊 -->
@@ -75,12 +75,7 @@
 
     <!-- Google 試算表資料串接與互動腳本 -->
     <script>
-        // 確保這裡的 apiURL 是你原本能正常讀取「工作表1」的 Apps Script 部署網址
         const apiURL = 'https://script.google.com/macros/s/AKfycbyxG_hOTI6X2bCDWVs3y62peCIqg52U9EMGDbpEysqdfu6MiEFSFFb9ZN9mqJ0eb3vf/exec';
-
-        // 將上方圖片換成你指定的這張復古邀請函圖片網址
-        document.getElementById('invitation-cover').src = 'https://i.imgur.com/your_provided_image_url.jpg'; 
-        // 💡 如果你手邊有這張圖的直接網址（例如 Imgur 或 GitHub 圖片網址），可以直接貼在上方引號內；或者直接把圖片上傳到 GitHub 專案資料夾並填入檔名（例如 './image.jpg'）
 
         // 繽紛各異的禮物盒圖示色彩搭配
         const giftColors = [
