@@ -50,9 +50,10 @@
             ~ Naughty or Nice? ~
         </div>
 
-        <!-- 主視覺邀請函圖片封面 -->
+        <!-- 主視覺封面圖片（動態讀取自工作表2 A1） -->
         <div class="retro-card rounded-2xl p-3 sm:p-4 shadow-xl overflow-hidden text-center">
-            <img src="" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
+            <img id="cover-img" src="" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1] hidden">
+            <div id="cover-loading" class="text-xs text-[#7a685e] font-mono py-8">Loading cover image...</div>
         </div>
 
         <!-- 👇 Google 試算表 A 欄動態生成的導覽按鈕區塊 -->
@@ -89,7 +90,22 @@
 
         fetch(apiURL)
             .then(response => response.json())
-            .then(data => {
+            .then(responseObj => {
+                // 1. 處理封面圖片 (來自工作表2 A1)
+                const coverImgElem = document.getElementById('cover-img');
+                const coverLoadingElem = document.getElementById('cover-loading');
+                if (responseObj.cover) {
+                    coverImgElem.src = responseObj.cover;
+                    coverImgElem.onload = () => {
+                        coverLoadingElem.style.display = 'none';
+                        coverImgElem.classList.remove('hidden');
+                    };
+                } else {
+                    coverLoadingElem.innerText = 'Cover image not found in Sheet 2 (A1)';
+                }
+
+                // 2. 處理選單與詳細資訊 (來自工作表1)
+                const data = responseObj.menu;
                 const btnContainer = document.getElementById('dynamic-menu-grid');
                 const detailsContainer = document.getElementById('details-container');
                 
@@ -127,14 +143,14 @@
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕
+                    // 上方 A 欄選項按鈕
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm text-xs tracking-wider uppercase';
                     btn.innerHTML = `<span>${cat}</span>`;
                     btnContainer.appendChild(btn);
 
-                    // 2. 下方資訊區塊
+                    // 下方資訊區塊
                     const sectionCard = document.createElement('div');
                     sectionCard.id = anchorId;
                     sectionCard.className = 'info-section rounded-xl p-4 shadow-sm scroll-mt-6';
