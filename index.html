@@ -55,13 +55,14 @@
             background-color: #822831;
         }
         /* 倒數進度條外框與特效 */
-        .countdown-bar-container {
+        .countdown-track {
+            position: relative;
+            height: 28px;
             background-color: #f0e6dc;
             border: 1px solid #d9ccbe;
             border-radius: 9999px;
-            overflow: hidden;
-            position: relative;
-            height: 24px;
+            overflow: visible; /* 允許聖誕老人稍微超出跑道邊緣 */
+            margin-top: 10px;
         }
         .countdown-bar-fill {
             background: linear-gradient(90deg, #a3333d 0%, #c2414d 100%);
@@ -69,6 +70,20 @@
             width: 0%;
             transition: width 1s linear;
             border-radius: 9999px;
+        }
+        /* 奔跑的聖誕老人圖示定位 */
+        .running-santa {
+            position: absolute;
+            top: -24px;
+            transform: translateX(-50%);
+            font-size: 22px;
+            transition: left 1s linear;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+            animation: bounce-gentle 0.6s infinite alternate;
+        }
+        @keyframes bounce-gentle {
+            0% { transform: translateX(-50%) translateY(0); }
+            100% { transform: translateX(-50%) translateY(-3px); }
         }
     </style>
 </head>
@@ -87,8 +102,8 @@
             <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
         </div>
 
-        <!-- ⏳ 動態倒數計時與 Progress Bar 區塊 -->
-        <div class="retro-card rounded-xl p-4 text-center shadow-sm space-y-2.5">
+        <!-- ⏳ 動態倒數計時與 🎅🏻 聖誕老人跑步 Bar 區塊 -->
+        <div class="retro-card rounded-xl p-4 text-center shadow-sm space-y-2">
             <div class="script-font text-2xl text-[#a3333d] font-normal">
                 Countdown to Party
             </div>
@@ -96,8 +111,11 @@
             <div id="countdown-timer" class="serif-font text-lg sm:text-xl font-semibold italic text-[#5c4a42] tracking-wide">
                 計算中...
             </div>
-            <!-- 進度條 Bar -->
-            <div class="countdown-bar-container w-full shadow-inner">
+            <!-- 跑道與進度條 -->
+            <div class="countdown-track w-full shadow-inner">
+                <!-- 跑步的聖誕老人 -->
+                <div id="santa-runner" class="running-santa" style="left: 0%;">🎅🏻</div>
+                <!-- 內裝進度條 -->
                 <div id="countdown-bar" class="countdown-bar-fill"></div>
             </div>
         </div>
@@ -132,9 +150,9 @@
         </div>
     </main>
 
-    <!-- 倒數計時、進度條與試算表串接腳本 -->
+    <!-- 倒數計時、聖誕老人跑動邏輯與試算表串接腳本 -->
     <script>
-        // ⏳ 倒數計時與進度條邏輯 (設定一個基準總天數，例如距離派對 90 天前開始計算進度)
+        // ⏳ 倒數計時與聖誕老人跑動邏輯
         const targetDate = new Date('2026-12-19T18:00:00').getTime();
         const startDate = new Date('2026-09-20T00:00:00').getTime(); // 基準起始日
 
@@ -144,10 +162,12 @@
 
             const timerElem = document.getElementById('countdown-timer');
             const barElem = document.getElementById('countdown-bar');
+            const santaElem = document.getElementById('santa-runner');
 
             if (distance < 0) {
                 timerElem.innerHTML = "Party has started! 🎉";
                 if (barElem) barElem.style.width = '100%';
+                if (santaElem) santaElem.style.left = '100%';
                 return;
             }
 
@@ -158,7 +178,7 @@
 
             timerElem.innerHTML = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
 
-            // 計算進度條百分比 (隨時間推進增加)
+            // 計算百分比 (0% ~ 100%)
             const totalDuration = targetDate - startDate;
             const elapsed = now - startDate;
             let percentage = (elapsed / totalDuration) * 100;
@@ -167,6 +187,9 @@
 
             if (barElem) {
                 barElem.style.width = percentage + '%';
+            }
+            if (santaElem) {
+                santaElem.style.left = percentage + '%';
             }
         }
 
