@@ -62,7 +62,7 @@
             border: 1px solid #d9ccbe;
             border-radius: 9999px;
             overflow: visible; /* 允許聖誕老人稍微超出跑道邊緣 */
-            margin-top: 10px;
+            margin-top: 14px;
         }
         .countdown-bar-fill {
             background: linear-gradient(90deg, #a3333d 0%, #c2414d 100%);
@@ -71,14 +71,15 @@
             transition: width 1s linear;
             border-radius: 9999px;
         }
-        /* 奔跑的聖誕老人圖示定位 */
-        .running-santa {
+        /* 跑道上的聖誕老人圖片 (對應新圖檔) */
+        .running-santa-img {
             position: absolute;
-            top: -24px;
+            top: -26px;
             transform: translateX(-50%);
-            font-size: 22px;
+            width: 44px;
+            height: auto;
             transition: left 1s linear;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
             animation: bounce-gentle 0.6s infinite alternate;
         }
         @keyframes bounce-gentle {
@@ -102,7 +103,7 @@
             <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
         </div>
 
-        <!-- ⏳ 動態倒數計時與 🎅🏻 聖誕老人跑步 Bar 區塊 -->
+        <!-- ⏳ 動態倒數計時與聖誕老人跑步 Bar 區塊 -->
         <div class="retro-card rounded-xl p-4 text-center shadow-sm space-y-2">
             <div class="script-font text-2xl text-[#a3333d] font-normal">
                 Countdown to Party
@@ -113,8 +114,8 @@
             </div>
             <!-- 跑道與進度條 -->
             <div class="countdown-track w-full shadow-inner">
-                <!-- 跑步的聖誕老人 -->
-                <div id="santa-runner" class="running-santa" style="left: 0%;">🎅🏻</div>
+                <!-- 聖誕老人跑步圖片 (已對應新圖檔 BBC9C664-44FA-416A-8343-D27912064E4A.png) -->
+                <img id="santa-runner" src="./BBC9C664-44FA-416A-8343-D27912064E4A.png" alt="Running Santa" class="running-santa-img" style="left: 0%;">
                 <!-- 內裝進度條 -->
                 <div id="countdown-bar" class="countdown-bar-fill"></div>
             </div>
