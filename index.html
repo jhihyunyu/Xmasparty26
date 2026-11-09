@@ -38,6 +38,14 @@
             background: #fbf8f5;
             border: 1px solid #e7dcd1;
         }
+        .action-btn {
+            background-color: #a3333d;
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .action-btn:hover {
+            background-color: #822831;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start p-4 sm:p-6 relative overflow-x-hidden">
@@ -50,9 +58,31 @@
             ~ Naughty or Nice? ~
         </div>
 
-        <!-- 主視覺封面圖片（已對應你剛上傳的 IMG_3838.jpeg） -->
+        <!-- 主視覺封面圖片（IMG_3838.jpeg） -->
         <div class="retro-card rounded-2xl p-2 sm:p-3 shadow-xl overflow-hidden text-center">
             <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
+        </div>
+
+        <!-- ⏳ 動態倒數計時區塊 -->
+        <div class="retro-card rounded-xl p-4 text-center shadow-sm">
+            <div class="serif-font text-xs tracking-widest uppercase text-[#a3333d] font-semibold mb-1">
+                Event Countdown / 倒數計時
+            </div>
+            <div id="countdown-timer" class="serif-font text-lg sm:text-xl font-bold text-[#5c4a42] tracking-wide">
+                計算中...
+            </div>
+        </div>
+
+        <!-- 📅 加入 Google 行事曆按鈕 -->
+        <div class="text-center">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Christmas+Party+%45The+Guandi&dates=20261219T100000Z/20261219T160000Z&details=%E5%A5%BD%E5%8F%8B%E6%B4%BE%E5%B0%8D%E6%AD%A1%E8%BF%8E%E5%85%89%E8%87%A8%EF%BC%81&location=111%E8%87%BA%E5%8C%97%E5%B8%82%E5%A3%AB%E6%9E%97%E5%8D%80%E7%A6%8F%E6%9E%97%E9%87%8C%E4%B8%AD%E5%B1%B1%E5%8C%97%E8%B7%AF%E4%BA%94%E6%AE%B5476%E8%B2%938%E6%A8%93%E4%B9%8B8B1" 
+               target="_blank" 
+               class="action-btn w-full py-3 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <span>加入 Google 行事曆</span>
+            </a>
         </div>
 
         <!-- 👇 Google 試算表 A 欄動態生成的導覽按鈕區塊 -->
@@ -73,11 +103,36 @@
         </div>
     </main>
 
-    <!-- Google 試算表資料串接與互動腳本 -->
+    <!-- 倒數計時與試算表串接腳本 -->
     <script>
+        // ⏳ 倒數計時邏輯 (目標時間: 2026年12月19日 18:00:00)
+        const targetDate = new Date('2026-12-19T18:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const timerElem = document.getElementById('countdown-timer');
+
+            if (distance < 0) {
+                timerElem.innerHTML = "派對已經開始囉！ 🎉";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            timerElem.innerHTML = `${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 📊 Google 試算表資料串接
         const apiURL = 'https://script.google.com/macros/s/AKfycbyxG_hOTI6X2bCDWVs3y62peCIqg52U9EMGDbpEysqdfu6MiEFSFFb9ZN9mqJ0eb3vf/exec';
 
-        // 繽紛各異的禮物盒圖示色彩搭配
         const giftColors = [
             { box: '#a3333d', ribbon: '#f1c40f' }, 
             { box: '#27ae60', ribbon: '#e74c3c' }, 
