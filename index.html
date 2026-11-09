@@ -6,15 +6,12 @@
     <title>Christmas Party — @The Guandi</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: #f6f0ea; /* 復古米色紙張背景 */
             color: #2c221e;
-        }
-        .script-font {
-            font-family: 'Great Vibes', cursive;
         }
         .serif-font {
             font-family: 'Cormorant Garamond', serif;
@@ -23,9 +20,6 @@
             background-color: #fbf8f5;
             border: 1px solid #e7dcd1;
             box-shadow: 0 10px 30px rgba(120, 90, 70, 0.08);
-        }
-        .ribbon-text {
-            color: #a3333d; /* 手繪紅 */
         }
         .grid-btn {
             background: #f4ece4;
@@ -51,77 +45,14 @@
     <!-- 主要容器 -->
     <main class="w-full max-w-md relative z-10 flex flex-col space-y-6 pb-16 pt-4">
         
-        <!-- 頂部副標題 (對應圖片的 Naughty or Nice?) -->
-        <div class="text-center text-sm tracking-wider ribbon-text script-font italic font-normal">
-            Naughty or Nice?
+        <!-- 頂部副標題 -->
+        <div class="text-center text-xs tracking-widest text-[#a3333d] uppercase serif-font italic font-medium">
+            ~ Naughty or Nice? ~
         </div>
 
-        <!-- 主視覺邀請函卡片 -->
-        <div class="retro-card rounded-2xl p-6 sm:p-8 relative overflow-hidden text-center">
-            
-            <!-- 頂部裝飾蝴蝶結 (精緻 SVG 模擬圖片中的手繪紅緞帶) -->
-            <div class="flex justify-between items-center px-1 mb-2 text-[#a3333d]">
-                <!-- 左蝴蝶結 -->
-                <svg class="w-16 h-8 opacity-90 transform -scale-x-100" viewBox="0 0 100 50" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M50 25 C30 5, 10 10, 2 25 C10 40, 30 45, 50 25 C60 10, 80 5, 95 15 C85 30, 70 40, 50 25 Z" fill="#fae8e6"/>
-                    <path d="M50 25 C45 35, 30 48, 15 48" stroke-linecap="round"/>
-                    <path d="M50 25 C55 38, 70 49, 85 45" stroke-linecap="round"/>
-                </svg>
-                <!-- 右蝴蝶結 -->
-                <svg class="w-16 h-8 opacity-90" viewBox="0 0 100 50" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M50 25 C30 5, 10 10, 2 25 C10 40, 30 45, 50 25 C60 10, 80 5, 95 15 C85 30, 70 40, 50 25 Z" fill="#fae8e6"/>
-                    <path d="M50 25 C45 35, 30 48, 15 48" stroke-linecap="round"/>
-                    <path d="M50 25 C55 38, 70 49, 85 45" stroke-linecap="round"/>
-                </svg>
-            </div>
-
-            <!-- 主標題：Christmas Party (使用圖片同款手寫草寫字型) -->
-            <div class="my-1">
-                <h1 class="script-font text-5xl sm:text-6xl ribbon-text tracking-wide leading-tight py-2">
-                    Christmas Party
-                </h1>
-            </div>
-
-            <!-- 參考圖片繪製的復古手繪風聖誕樹 (SVG) -->
-            <div class="my-4 flex justify-center">
-                <svg class="w-36 h-44 sm:w-44 sm:h-52 drop-shadow-sm" viewBox="0 0 160 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- 樹幹 -->
-                    <rect x="73" y="180" width="14" height="25" fill="#5c3a21" rx="2"/>
-                    <!-- 樹身：多層次復古手繪綠色針葉與陰影線條 -->
-                    <!-- 底層 -->
-                    <path d="M80 30 C75 50, 40 80, 25 110 C45 110, 65 105, 75 115 C55 120, 30 145, 15 170 C40 170, 70 165, 80 175 C90 165, 120 170, 145 170 C130 145, 105 120, 85 115 C95 105, 115 110, 135 110 C120 80, 85 50, 80 30 Z" fill="#4a6b5d" stroke="#2c453b" stroke-width="1.5" stroke-linejoin="round"/>
-                    <!-- 針葉細節與紋理 -->
-                    <path d="M80 45 L65 75 M80 65 L60 95 M80 85 L50 120 M80 105 L40 140 M80 130 L30 165" stroke="#354f42" stroke-width="1" stroke-linecap="round"/>
-                    <path d="M80 45 L95 75 M80 65 L100 95 M80 85 L110 120 M80 105 L120 140 M80 130 L130 165" stroke="#354f42" stroke-width="1" stroke-linecap="round"/>
-                    
-                    <!-- 樹上的紅色復古裝飾小球 -->
-                    <circle cx="80" cy="55" r="3.5" fill="#a3333d"/>
-                    <circle cx="68" cy="85" r="4" fill="#a3333d"/>
-                    <circle cx="95" cy="95" r="4.5" fill="#a3333d"/>
-                    <circle cx="55" cy="125" r="4" fill="#a3333d"/>
-                    <circle cx="105" cy="115" r="4.5" fill="#a3333d"/>
-                    <circle cx="45" cy="155" r="4.5" fill="#a3333d"/>
-                    <circle cx="115" cy="145" r="4" fill="#a3333d"/>
-                    <circle cx="75" cy="150" r="4" fill="#a3333d"/>
-                </svg>
-            </div>
-
-            <!-- 時間與日期資訊 (對應圖片格式) -->
-            <div class="my-3 py-2.5 border-t border-b border-[#ebdcd0]">
-                <p class="serif-font text-base sm:text-lg tracking-wider text-[#5c4a42] font-semibold">
-                    December &nbsp;|&nbsp; 19th &nbsp;|&nbsp; 18:00-24:00
-                </p>
-            </div>
-
-            <!-- 地點資訊 -->
-            <div class="mt-3 space-y-1">
-                <div class="serif-font text-lg font-semibold text-[#a3333d] tracking-wide">
-                    @The Guandi
-                </div>
-                <div class="text-[11px] text-[#7a685e] leading-relaxed px-2 font-light">
-                    111臺北市士林區福林里中山北路五段476號8樓之8B1
-                </div>
-            </div>
+        <!-- 主視覺邀請函圖片封面 -->
+        <div class="retro-card rounded-2xl p-3 sm:p-4 shadow-xl overflow-hidden text-center">
+            <img src="" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
         </div>
 
         <!-- 👇 Google 試算表 A 欄動態生成的導覽按鈕區塊 -->
