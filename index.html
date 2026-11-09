@@ -63,7 +63,7 @@
             <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]">
         </div>
 
-        <!-- ⏳ 動態倒數計時區塊（文字已更新） -->
+        <!-- ⏳ 動態倒數計時區塊 -->
         <div class="retro-card rounded-xl p-4 text-center shadow-sm">
             <div class="serif-font text-xs tracking-widest uppercase text-[#a3333d] font-semibold mb-1">
                 開趴倒數 預備備
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <!-- 👇 下方詳細資訊區塊（以 A 欄為標題、B 欄為內容，前方帶有彩色禮物盒圖示） -->
+        <!-- 👇 下方詳細資訊區塊（以 A 欄為標題、B 欄為內容，若為 Location 則會自動在最後方帶入新上傳的地圖圖片） -->
         <div id="details-container" class="space-y-4 pt-2">
             <!-- 動態載入的詳細資訊 -->
         </div>
@@ -214,6 +214,15 @@
                         contentHtml += `<div class="py-0.5">${line}</div>`;
                     });
                     contentHtml += `</div>`;
+
+                    // 💡 自動判斷：若分類名稱包含 Location，則在下方結尾處嵌入你剛上傳的圖檔
+                    if (cat.toLowerCase().includes('location')) {
+                        contentHtml += `
+                            <div class="mt-3 pt-2 pl-7">
+                                <img src="./531100AE-D9AF-4E38-84B3-9E091DD39747.png" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]">
+                            </div>
+                        `;
+                    }
 
                     sectionCard.innerHTML = contentHtml;
                     detailsContainer.appendChild(sectionCard);
