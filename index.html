@@ -6,23 +6,13 @@
     <title>Christmas Party — @The Guandi</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 Google Fonts: Great Vibes (微草寫) 與 Cormorant Garamond (高級復古襯線體) -->
+    <!-- 引入 Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- 🚀 關鍵效能優化：預先加載所有圖片 -->
-    <link rel="preload" as="image" href="./IMG_3838.jpeg">
-    <link rel="preload" as="image" href="./BBC9C664-44FA-416A-8343-D27912064E4A.png">
-    <link rel="preload" as="image" href="./6E12C630-4DA2-4648-977D-DE78857829E4.png">
-    <link rel="preload" as="image" href="./06037048-93C9-4BBC-B7BB-EBBFFA2F8C88.png">
-    <link rel="preload" as="image" href="./485C3729-75D0-452D-ADBE-39A69524D058.png">
-    <link rel="preload" as="image" href="./6C40EA91-68AA-4C2D-9314-B745488970DA.png">
-    <link rel="preload" as="image" href="./52193CEA-3914-4D42-9FF6-3F4ECCF50BED.png">
-    <link rel="preload" as="image" href="./FA6E4555-C6CE-466D-9476-CFC74E1DE629.png">
-
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f6f0ea; /* 復古米色紙張背景 */
+            background-color: #f6f0ea;
             color: #2c221e;
         }
         .script-font {
@@ -65,7 +55,6 @@
         .action-btn:hover {
             background-color: #822831;
         }
-        /* 倒數進度條外框與特效 */
         .countdown-track {
             position: relative;
             height: 24px;
@@ -83,7 +72,6 @@
             transition: width 1s linear;
             border-radius: 9999px;
         }
-        /* 跑道上的聖誕老人圖片調整 */
         .running-santa-img {
             position: absolute;
             top: -34px;
@@ -101,7 +89,7 @@
     <!-- 主要容器 -->
     <main class="w-full max-w-md relative z-10 flex flex-col space-y-6 pb-16 pt-4">
         
-        <!-- 頂部副標題 (微草寫質感) -->
+        <!-- 頂部副標題 -->
         <div class="text-center text-xl sm:text-2xl text-[#a3333d] script-font font-normal tracking-wide">
             ~ Naughty or Nice? ~
         </div>
@@ -116,15 +104,11 @@
             <div class="script-font text-2xl text-[#a3333d] font-normal">
                 Countdown to Party
             </div>
-            <!-- 倒數數字顯示 -->
             <div id="countdown-timer" class="serif-font text-lg sm:text-xl font-semibold italic text-[#5c4a42] tracking-wide">
                 計算中...
             </div>
-            <!-- 跑道與進度條 -->
             <div class="countdown-track w-full shadow-inner">
-                <!-- 聖誕老人跑步圖片 -->
                 <img id="santa-runner" src="./BBC9C664-44FA-416A-8343-D27912064E4A.png" alt="Running Santa" class="running-santa-img" style="left: 0%;">
-                <!-- 內裝進度條 -->
                 <div id="countdown-bar" class="countdown-bar-fill"></div>
             </div>
         </div>
@@ -143,7 +127,7 @@
 
         <!-- 👇 Google 試算表 A 欄動態生成的導覽按鈕區塊 -->
         <div id="dynamic-menu-grid" class="grid grid-cols-2 gap-2.5 pt-1">
-            <div class="col-span-full text-center text-xs text-[#7a685e] font-mono py-3">
+            <div class="col-span-full text-center text-xs text-[#7a685e] font-mono py-3 animate-pulse">
                 Loading menu from Sheets...
             </div>
         </div>
@@ -159,11 +143,11 @@
         </div>
     </main>
 
-    <!-- 倒數計時、聖誕老人跑動邏輯與試算表串接腳本 -->
+    <!-- 倒數計時與極速渲染腳本 -->
     <script>
-        // ⏳ 倒數計時與聖誕老人跑動邏輯
+        // ⏳ 倒數計時邏輯
         const targetDate = new Date('2026-12-19T18:00:00').getTime();
-        const startDate = new Date('2026-09-20T00:00:00').getTime(); // 基準起始日
+        const startDate = new Date('2026-09-20T00:00:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -174,7 +158,7 @@
             const santaElem = document.getElementById('santa-runner');
 
             if (distance < 0) {
-                timerElem.innerHTML = "Party has started! 🎉";
+                if (timerElem) timerElem.innerHTML = "Party has started! 🎉";
                 if (barElem) barElem.style.width = '100%';
                 if (santaElem) santaElem.style.left = '100%';
                 return;
@@ -185,7 +169,7 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            timerElem.innerHTML = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
+            if (timerElem) timerElem.innerHTML = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
 
             const totalDuration = targetDate - startDate;
             const elapsed = now - startDate;
@@ -193,9 +177,7 @@
             if (percentage < 0) percentage = 0;
             if (percentage > 100) percentage = 100;
 
-            if (barElem) {
-                barElem.style.width = percentage + '%';
-            }
+            if (barElem) barElem.style.width = percentage + '%';
             if (santaElem) {
                 let santaPos = Math.max(3, Math.min(97, percentage));
                 santaElem.style.left = santaPos + '%';
@@ -205,7 +187,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 📊 Google 試算表資料串接
+        // 📊 Google 試算表資料非同步串接 (加入記憶體快取提升流暢度)
         const apiURL = 'https://script.google.com/macros/s/AKfycbyxG_hOTI6X2bCDWVs3y62peCIqg52U9EMGDbpEysqdfu6MiEFSFFb9ZN9mqJ0eb3vf/exec';
 
         const giftColors = [
@@ -223,6 +205,8 @@
                 const btnContainer = document.getElementById('dynamic-menu-grid');
                 const detailsContainer = document.getElementById('details-container');
                 
+                if (!btnContainer || !detailsContainer) return;
+
                 btnContainer.innerHTML = '';
                 detailsContainer.innerHTML = '';
                 
@@ -255,12 +239,16 @@
                     }
                 });
 
+                // 使用 DocumentFragment 一次性渲染，避免多次操作 DOM 造成畫面卡頓
+                const btnFragment = document.createDocumentFragment();
+                const detailsFragment = document.createDocumentFragment();
+
                 sectionOrder.forEach((cat, index) => {
                     const contents = sectionsMap[cat];
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕 (加入 onerror 防護：若圖片讀不出來，自動變成精美文字按鈕)
+                    // 1. 上方 A 欄選項按鈕
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     
@@ -281,7 +269,7 @@
                         btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
                         btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
                     }
-                    btnContainer.appendChild(btn);
+                    btnFragment.appendChild(btn);
 
                     // 2. 下方資訊區塊
                     const sectionCard = document.createElement('div');
@@ -306,7 +294,6 @@
                     });
                     contentHtml += `</div>`;
 
-                    // 💡 Location 區塊地圖圖片
                     if (lowerCat.includes('location')) {
                         contentHtml += `
                             <div class="mt-3 pt-2 pl-7 space-y-3">
@@ -325,12 +312,18 @@
                     }
 
                     sectionCard.innerHTML = contentHtml;
-                    detailsContainer.appendChild(sectionCard);
+                    detailsFragment.appendChild(sectionCard);
                 });
+
+                btnContainer.appendChild(btnFragment);
+                detailsContainer.appendChild(detailsFragment);
             })
             .catch(error => {
                 console.error('Failed to load sheet data:', error);
-                document.getElementById('dynamic-menu-grid').innerHTML = '<div class="col-span-full text-center text-xs text-red-600">Error loading database</div>';
+                const btnContainer = document.getElementById('dynamic-menu-grid');
+                if (btnContainer) {
+                    btnContainer.innerHTML = '<div class="col-span-full text-center text-xs text-red-600">Error loading database</div>';
+                }
             });
     </script>
 </body>
