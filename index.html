@@ -40,10 +40,6 @@
             color: #ffffff;
             border-color: #a3333d;
         }
-        .info-section {
-            background: #fbf8f5;
-            border: 1px solid #e7dcd1;
-        }
         .action-btn {
             background-color: #a3333d;
             color: #ffffff;
@@ -247,18 +243,18 @@
                     }
                 });
 
-                sectionOrder.forEach((cat, index) => {
+.sectionOrder.forEach((cat, index) => {
                     const contents = sectionsMap[cat];
                     const anchorId = 'section-' + index;
                     const colorScheme = giftColors[index % giftColors.length];
 
-                    // 1. 上方 A 欄選項按鈕 (若分類名稱為 Intro，自動替換為圖片按鈕)
                     const btn = document.createElement('a');
                     btn.href = `#${anchorId}`;
                     
+                    // 💡 如果是 Intro，直接拿掉所有外框、背景、陰影，用整張圖片撐滿！
                     if (cat.toLowerCase() === 'intro') {
-                        btn.className = 'grid-btn p-1.5 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm overflow-hidden';
-                        btn.innerHTML = `<img src="./0061FE11-7F56-4D22-9479-087E7530B637.png" alt="Intro" class="w-full h-auto max-h-[38px] object-contain rounded">`;
+                        btn.className = 'col-span-1 block overflow-hidden transition-transform active:scale-95';
+                        btn.innerHTML = `<img src="./0061FE11-7F56-4D22-9479-087E7530B637.png" alt="Intro" class="w-full h-auto object-cover rounded-lg">`;
                     } else {
                         btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
                         btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
