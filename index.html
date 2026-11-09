@@ -33,34 +33,8 @@
             letter-spacing: 0.08em;
         }
         .action-btn:hover { background-color: #822831; }
-        .countdown-track {
-            position: relative;
-            height: 24px;
-            background-color: #f0e6dc;
-            border: 1px solid #d9ccbe;
-            border-radius: 9999px;
-            overflow: visible;
-            margin-top: 18px;
-            margin-bottom: 6px;
-        }
-        .countdown-bar-fill {
-            background: linear-gradient(90deg, #a3333d 0%, #c2414d 100%);
-            height: 100%;
-            width: 0%;
-            transition: width 1s linear;
-            border-radius: 9999px;
-        }
-        .running-santa-img {
-            position: absolute;
-            top: -34px;
-            transform: translateX(-50%);
-            width: 48px;
-            height: auto;
-            transition: left 1s linear;
-            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
-            z-index: 20;
-        }
-        /* 💡 修正：使用 contain 讓整張按鈕圖片完整顯示，上下左右絕不被卡掉 */
+        
+        /* 按鈕圖片完整顯示設定 */
         .menu-btn-img {
             width: 100%;
             height: auto;
@@ -89,17 +63,42 @@
             <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]" fetchpriority="high" decoding="async">
         </div>
 
-        <!-- ⏳ 動態倒數計時與聖誕老人跑步 Bar 區塊 -->
-        <div class="retro-card rounded-xl p-4 text-center shadow-sm space-y-2">
-            <div class="script-font text-2xl text-[#a3333d] font-normal">
+        <!-- ⏳ 全新精緻設計的倒數計時區塊 -->
+        <div class="retro-card rounded-2xl p-5 text-center shadow-md relative overflow-hidden">
+            <!-- 標題 -->
+            <div class="script-font text-2xl sm:text-3xl text-[#a3333d] font-normal mb-3">
                 Countdown to Party
             </div>
-            <div id="countdown-timer" class="serif-font text-lg sm:text-xl font-semibold italic text-[#5c4a42] tracking-wide">
-                計算中...
+
+            <!-- 裝飾分隔線 -->
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="h-[1px] w-16 bg-[#e0d2c5]"></div>
+                <span class="text-[#a3333d] text-xs">✦</span>
+                <div class="h-[1px] w-16 bg-[#e0d2c5]"></div>
             </div>
-            <div class="countdown-track w-full shadow-inner">
-                <img id="santa-runner" src="./BBC9C664-44FA-416A-8343-D27912064E4A.png" alt="Running Santa" class="running-santa-img" style="left: 0%;" decoding="async">
-                <div id="countdown-bar" class="countdown-bar-fill"></div>
+
+            <!-- 倒數數字格子排版 -->
+            <div class="grid grid-cols-4 gap-1 text-center items-center py-1">
+                <!-- Days -->
+                <div class="border-r border-[#e7dcd1] pr-1">
+                    <div id="countdown-days" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Days</div>
+                </div>
+                <!-- Hrs -->
+                <div class="border-r border-[#e7dcd1] pr-1">
+                    <div id="countdown-hrs" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Hrs</div>
+                </div>
+                <!-- Mins -->
+                <div class="border-r border-[#e7dcd1] pr-1">
+                    <div id="countdown-mins" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Mins</div>
+                </div>
+                <!-- Secs -->
+                <div>
+                    <div id="countdown-secs" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Secs</div>
+                </div>
             </div>
         </div>
 
@@ -134,20 +133,21 @@
     <!-- 倒數與極速渲染邏輯 -->
     <script>
         const targetDate = new Date('2026-12-19T18:00:00').getTime();
-        const startDate = new Date('2026-09-20T00:00:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
-            const timerElem = document.getElementById('countdown-timer');
-            const barElem = document.getElementById('countdown-bar');
-            const santaElem = document.getElementById('santa-runner');
+            const daysElem = document.getElementById('countdown-days');
+            const hrsElem = document.getElementById('countdown-hrs');
+            const minsElem = document.getElementById('countdown-mins');
+            const secsElem = document.getElementById('countdown-secs');
 
             if (distance < 0) {
-                if (timerElem) timerElem.innerHTML = "Party has started! 🎉";
-                if (barElem) barElem.style.width = '100%';
-                if (santaElem) santaElem.style.left = '100%';
+                if (daysElem) daysElem.innerHTML = "00";
+                if (hrsElem) hrsElem.innerHTML = "00";
+                if (minsElem) minsElem.innerHTML = "00";
+                if (secsElem) secsElem.innerHTML = "00";
                 return;
             }
 
@@ -156,19 +156,10 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            if (timerElem) timerElem.innerHTML = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
-
-            const totalDuration = targetDate - startDate;
-            const elapsed = now - startDate;
-            let percentage = (elapsed / totalDuration) * 100;
-            if (percentage < 0) percentage = 0;
-            if (percentage > 100) percentage = 100;
-
-            if (barElem) barElem.style.width = percentage + '%';
-            if (santaElem) {
-                let santaPos = Math.max(3, Math.min(97, percentage));
-                santaElem.style.left = santaPos + '%';
-            }
+            if (daysElem) daysElem.innerHTML = String(days).padStart(2, '0');
+            if (hrsElem) hrsElem.innerHTML = String(hours).padStart(2, '0');
+            if (minsElem) minsElem.innerHTML = String(minutes).padStart(2, '0');
+            if (secsElem) secsElem.innerHTML = String(seconds).padStart(2, '0');
         }
 
         setInterval(updateCountdown, 1000);
