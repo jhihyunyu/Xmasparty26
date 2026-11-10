@@ -130,15 +130,111 @@
             </a>
         </div>
 
-        <!-- 👇 Google 試算表 A 欄動態生成的導覽按鈕區塊 -->
-        <div id="dynamic-menu-grid" class="grid grid-cols-2 gap-2.5 pt-1">
-            <div class="col-span-full text-center text-xs text-[#7a685e] font-mono py-3 animate-pulse">
-                Loading menu from Sheets...
-            </div>
+        <!-- 👇 寫死固定產生的導覽按鈕區塊 (2欄排列) -->
+        <div class="grid grid-cols-2 gap-2.5 pt-1">
+            <a href="#section-intro" class="col-span-1 block overflow-hidden">
+                <img src="./Intro.webp" alt="Intro" class="menu-btn-img" loading="lazy" decoding="async">
+            </a>
+            <a href="#section-rundown" class="col-span-1 block overflow-hidden">
+                <img src="./Rundown.webp" alt="Rundown" class="menu-btn-img" loading="lazy" decoding="async">
+            </a>
+            <a href="#section-gift" class="col-span-1 block overflow-hidden">
+                <img src="./Gift_Exchange.webp" alt="Gift Exchange" class="menu-btn-img" loading="lazy" decoding="async">
+            </a>
+            <a href="#section-food" class="col-span-1 block overflow-hidden">
+                <img src="./Foods.webp" alt="Foods" class="menu-btn-img" loading="lazy" decoding="async">
+            </a>
+            <a href="#section-drinks" class="col-span-1 block overflow-hidden">
+                <img src="./Drinks.webp" alt="Drinks" class="menu-btn-img" loading="lazy" decoding="async">
+            </a>
+            <a href="#section-location" class="col-span-1 block overflow-hidden">
+                <img src="./Location.webp" alt="Location" class="menu-btn-img" loading="lazy" decoding="async">
+            </a>
         </div>
 
-        <!-- 👇 下方詳細資訊區塊 -->
-        <div id="details-container" class="space-y-4 pt-2"></div>
+        <!-- 👇 下方詳細資訊區塊 (全部寫死) -->
+        <div class="space-y-4 pt-2">
+            
+            <!-- 1. Intro 區塊 -->
+            <div id="section-intro" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
+                <h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">
+                    <span class="ml-1">Intro</span>
+                </h3>
+                <div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-2">
+                    <div class="py-0.5">好友派對歡迎光臨………</div>
+                </div>
+            </div>
+
+            <!-- 2. Rundown 區塊 -->
+            <div id="section-rundown" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
+                <h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">
+                    <span class="ml-1">Rundown</span>
+                </h3>
+                <div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-2">
+                    <div class="py-0.5">18:00-18:30 check-in</div>
+                    <div class="py-0.5">18:30-19:00 吃吃喝喝</div>
+                    <div class="py-0.5">20:00-22:00 遊戲時間</div>
+                    <div class="py-0.5">22:00~繼續開開心心</div>
+                </div>
+            </div>
+
+            <!-- 3. Gift Exchange 區塊 -->
+            <div id="section-gift" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
+                <h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">
+                    <span class="ml-1">Gift Exchange</span>
+                </h3>
+                <div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-2">
+                    <div class="py-0.5">1. 一人準備一件禮物</div>
+                    <div class="py-0.5">2. 不能花錢購買</div>
+                    <div class="py-0.5">3. 可以是任何形式</div>
+                </div>
+            </div>
+
+            <!-- 4. Food 區塊 (顯示指定精美菜單圖片) -->
+            <div id="section-food" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
+                <h3 class="script-font text-2xl text-[#a3333d] mb-3 pb-1 border-b border-[#ebdcd0] flex items-center">
+                    <span class="ml-1">Food</span>
+                </h3>
+                <div class="space-y-2">
+                    <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+            <!-- 5. Drinks 區塊 -->
+            <div id="section-drinks" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
+                <h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">
+                    <span class="ml-1">Drinks</span>
+                </h3>
+                <div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-2">
+                    <div class="py-0.5">提供各式特調飲品與微醺酒水</div>
+                    <div class="py-0.5">盡情暢飲、享受微醺聖誕夜</div>
+                </div>
+            </div>
+
+            <!-- 6. Location 區塊 (帶入地圖圖片與導航按鈕) -->
+            <div id="section-location" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
+                <h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">
+                    <span class="ml-1">Location</span>
+                </h3>
+                <div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-2 mb-3">
+                    <div class="py-0.5">官邸 the GUANDI</div>
+                    <div class="py-0.5">111臺北市士林區福林路中山北路五段476號8樓之8B1</div>
+                </div>
+                <div class="space-y-3">
+                    <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+                    <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
+                       target="_blank" 
+                       class="action-btn w-full py-2.5 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="serif-font italic text-sm tracking-widest">Open Google Maps</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
 
         <!-- 頁尾資訊 -->
         <div class="text-center text-xs text-[#8c786d] serif-font italic pt-4">
@@ -146,7 +242,7 @@
         </div>
     </main>
 
-    <!-- 倒數與極速渲染邏輯 -->
+    <!-- 倒數計時極速腳本 -->
     <script>
         const targetDate = new Date('2026-12-19T18:00:00').getTime();
 
@@ -180,152 +276,6 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
-
-        const apiURL = 'https://script.google.com/macros/s/AKfycbyxG_hOTI6X2bCDWVs3y62peCIqg52U9EMGDbpEysqdfu6MiEFSFFb9ZN9mqJ0eb3vf/exec';
-
-        const giftColors = [
-            { box: '#a3333d', ribbon: '#f1c40f' }, 
-            { box: '#27ae60', ribbon: '#e74c3c' }, 
-            { box: '#2980b9', ribbon: '#f39c12' }, 
-            { box: '#8e44ad', ribbon: '#2ecc71' }, 
-            { box: '#d35400', ribbon: '#3498db' }, 
-            { box: '#16a085', ribbon: '#f39c12' }  
-        ];
-
-        fetch(apiURL)
-            .then(response => response.json())
-            .then(data => {
-                const btnContainer = document.getElementById('dynamic-menu-grid');
-                const detailsContainer = document.getElementById('details-container');
-                
-                if (!btnContainer || !detailsContainer) return;
-
-                btnContainer.innerHTML = '';
-                detailsContainer.innerHTML = '';
-                
-                if (!data || data.length === 0) {
-                    btnContainer.innerHTML = '<div class="col-span-full text-center text-xs text-[#7a685e]">No records found</div>';
-                    return;
-                }
-
-                let sectionsMap = {};
-                let sectionOrder = [];
-                let currentCategory = '';
-
-                data.forEach((item) => {
-                    let colA = item.a !== undefined ? item.a : (Object.keys(item).length > 0 ? item[Object.keys(item)[0]] : '');
-                    let colB = item.b !== undefined ? item.b : (Object.keys(item).length > 1 ? item[Object.keys(item)[1]] : '');
-                    
-                    colA = colA ? String(colA).trim() : '';
-                    colB = colB ? String(colB).trim() : '';
-                    
-                    if (colA) {
-                        currentCategory = colA;
-                        if (!sectionsMap[currentCategory]) {
-                            sectionsMap[currentCategory] = [];
-                            sectionOrder.push(currentCategory);
-                        }
-                    }
-
-                    if (currentCategory && colB) {
-                        sectionsMap[currentCategory].push(colB);
-                    }
-                });
-
-                const btnFragment = document.createDocumentFragment();
-                const detailsFragment = document.createDocumentFragment();
-
-                sectionOrder.forEach((cat, index) => {
-                    const contents = sectionsMap[cat];
-                    const anchorId = 'section-' + index;
-                    const colorScheme = giftColors[index % giftColors.length];
-
-                    // 1. 上方按鈕
-                    const btn = document.createElement('a');
-                    btn.href = `#${anchorId}`;
-                    
-                    const lowerCat = cat.toLowerCase();
-                    let imgFileName = '';
-                    
-                    if (lowerCat === 'intro') imgFileName = 'Intro.webp';
-                    else if (lowerCat === 'rundown') imgFileName = 'Rundown.webp';
-                    else if (lowerCat.includes('gift')) imgFileName = 'Gift_Exchange.webp';
-                    else if (lowerCat.includes('food')) imgFileName = 'Foods.webp';
-                    else if (lowerCat.includes('drink')) imgFileName = 'Drinks.webp';
-                    else if (lowerCat.includes('location')) imgFileName = 'Location.webp';
-
-                    if (imgFileName) {
-                        btn.className = 'col-span-1 block overflow-hidden';
-                        btn.innerHTML = `<img src="./${imgFileName}" alt="${cat}" class="menu-btn-img" loading="lazy" decoding="async">`;
-                    } else {
-                        btn.className = 'grid-btn p-3 rounded-lg text-center flex items-center justify-center min-h-[46px] shadow-sm';
-                        btn.innerHTML = `<span class="serif-font italic text-base">${cat}</span>`;
-                    }
-                    btnFragment.appendChild(btn);
-
-                    // 2. 下方資訊區塊
-                    const sectionCard = document.createElement('div');
-                    sectionCard.id = anchorId;
-                    sectionCard.className = 'info-section rounded-xl p-4 shadow-sm scroll-mt-6';
-                    
-                    const giftSvg = `
-                        <svg class="w-5 h-5 inline-block mr-2 -mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 12V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V12H20Z" fill="${colorScheme.box}" stroke="#2c221e" stroke-width="1.5"/>
-                            <path d="M2 7H22V12H2V7Z" fill="${colorScheme.box}" stroke="#2c221e" stroke-width="1.5"/>
-                            <path d="M12 7V22" stroke="${colorScheme.ribbon}" stroke-width="2"/>
-                            <path d="M2 9.5H22" stroke="${colorScheme.ribbon}" stroke-width="1.5"/>
-                            <path d="M12 7C12 5.34315 10.6569 4 9 4C7.34315 4 6 5.34315 6 7C6 8.65685 9 10 12 7Z" fill="${colorScheme.ribbon}" stroke="#2c221e" stroke-width="1.5"/>
-                            <path d="M12 7C12 5.34315 13.3431 4 15 4C16.6569 4 18 5.34315 18 7C18 8.65685 15 10 12 7Z" fill="${colorScheme.ribbon}" stroke="#2c221e" stroke-width="1.5"/>
-                        </svg>
-                    `;
-
-                    let contentHtml = '';
-
-                    // 💡 如果分類是 Food，直接顯示你指定的全新圖片，不讀取試算表文字
-                    if (lowerCat.includes('food')) {
-                        contentHtml = `
-                            <h3 class="script-font text-2xl text-[#a3333d] mb-3 pb-1 border-b border-[#ebdcd0] flex items-center">${giftSvg}<span class="ml-1">${cat}</span></h3>
-                            <div class="space-y-2">
-                                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
-                            </div>
-                        `;
-                    } else {
-                        contentHtml = `<h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">${giftSvg}<span class="ml-1">${cat}</span></h3>`;
-                        contentHtml += `<div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-7">`;
-                        contents.forEach(line => {
-                            contentHtml += `<div class="py-0.5">${line}</div>`;
-                        });
-                        contentHtml += `</div>`;
-                    }
-
-                    // 💡 Location 區塊地圖圖片
-                    if (lowerCat.includes('location')) {
-                        contentHtml += `
-                            <div class="mt-3 pt-2 pl-7 space-y-3">
-                                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
-                                <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
-                                   target="_blank" 
-                                   class="action-btn w-full py-2.5 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                    <span class="serif-font italic text-sm tracking-widest">Open Google Maps</span>
-                                </a>
-                            </div>
-                        `;
-                    }
-
-                    sectionCard.innerHTML = contentHtml;
-                    detailsFragment.appendChild(sectionCard);
-                });
-
-                btnContainer.appendChild(btnFragment);
-                detailsContainer.appendChild(detailsFragment);
-            })
-            .catch(error => {
-                console.error('Failed to load sheet data:', error);
-            });
     </script>
 </body>
 </html>
