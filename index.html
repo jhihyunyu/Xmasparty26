@@ -19,16 +19,16 @@
         .script-font { font-family: 'Great Vibes', cursive; }
         .serif-font { font-family: 'Cormorant Garamond', serif; }
         
-        /* 酒紅色風格卡片與容器 */
+        /* 僅保留上方主視覺與倒數計時的卡片框 */
         .wine-card {
             background-color: rgba(61, 20, 25, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.3); /* 金色微光邊框 */
+            border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(5px);
         }
 
         .action-btn {
-            background-color: #d4af37; /* 質感金色按鈕 */
+            background-color: #d4af37;
             color: #350e12;
             transition: all 0.2s ease;
             font-family: 'Cormorant Garamond', serif;
@@ -129,41 +129,41 @@
             </a>
         </div>
 
-        <!-- 👇 下方詳細內容區塊 -->
+        <!-- 👇 下方詳細內容區塊 (已完全拔除外框與內距，圖片直接滿版融入酒紅色背景) -->
         <div class="space-y-6 pt-2">
             
-            <!-- 1. Intro (已更新為 IMG_3918.webp) -->
+            <!-- 1. Intro -->
             <div id="section-intro" class="scroll-mt-6">
-                <img src="./IMG_3918.webp" alt="Intro" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
+                <img src="./IMG_3918.webp" alt="Intro" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
             <!-- 2. Rundown -->
             <div id="section-rundown" class="scroll-mt-6">
-                <img src="./IMG_3907.jpeg" alt="Rundown Schedule" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
+                <img src="./IMG_3907.jpeg" alt="Rundown Schedule" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
             <!-- 3. Gift Exchange -->
             <div id="section-gift" class="scroll-mt-6">
-                <img src="./IMG_3905.jpeg" alt="Gift Exchange" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
+                <img src="./IMG_3905.jpeg" alt="Gift Exchange" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
             <!-- 4. Food -->
             <div id="section-food" class="scroll-mt-6">
-                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
+                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
             <!-- 5. Drinks -->
             <div id="section-drinks" class="scroll-mt-6">
-                <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
+                <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
             <!-- 6. Location -->
             <div id="section-location" class="scroll-mt-6 space-y-3">
-                <div class="text-xs sm:text-sm text-[#f6f0ea] font-mono leading-relaxed px-1 text-center wine-card p-3 rounded-xl shadow-sm">
+                <div class="text-xs sm:text-sm text-[#f6f0ea] font-mono leading-relaxed px-2 text-center wine-card p-3 rounded-xl shadow-sm">
                     <div class="font-bold text-sm text-[#f3d9a4] serif-font italic text-base">官邸 the GUANDI</div>
                     <div>111臺北市士林區福林路中山北路五段476號8樓之8B1</div>
                 </div>
-                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
+                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
                 <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
                    target="_blank" 
                    class="action-btn w-full py-3 px-4 rounded-xl shadow-md text-xs sm:text-sm tracking-widest uppercase flex items-center justify-center space-x-2">
