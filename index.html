@@ -19,7 +19,7 @@
         .script-font { font-family: 'Great Vibes', cursive; }
         .serif-font { font-family: 'Cormorant Garamond', serif; }
         
-        /* 僅保留上方主視覺與倒數計時的卡片框 */
+        /* 卡片與容器樣式 */
         .wine-card {
             background-color: rgba(61, 20, 25, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -107,7 +107,12 @@
             </a>
         </div>
 
-        <!-- 👇 導覽按鈕區塊 (2欄排列) -->
+        <!-- 👇 1. Intro 圖片（已移到按鈕群組上方） -->
+        <div id="section-intro" class="scroll-mt-6 pt-1">
+            <img src="./IMG_3918.webp" alt="Intro" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
+        </div>
+
+        <!-- 👇 2. 導覽按鈕區塊 (2欄排列) -->
         <div class="grid grid-cols-2 gap-2.5 pt-1">
             <a href="#section-intro" class="col-span-1 block overflow-hidden">
                 <img src="./Intro.webp" alt="Intro" class="menu-btn-img" loading="lazy" decoding="async">
@@ -129,35 +134,30 @@
             </a>
         </div>
 
-        <!-- 👇 下方詳細內容區塊 (已完全拔除外框與內距，圖片直接滿版融入酒紅色背景) -->
+        <!-- 👇 3. 其餘詳細內容區塊 (Rundown, Gift Exchange, Food, Drinks, Location) -->
         <div class="space-y-6 pt-2">
             
-            <!-- 1. Intro -->
-            <div id="section-intro" class="scroll-mt-6">
-                <img src="./IMG_3918.webp" alt="Intro" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
-            </div>
-
-            <!-- 2. Rundown -->
+            <!-- Rundown -->
             <div id="section-rundown" class="scroll-mt-6">
                 <img src="./IMG_3907.jpeg" alt="Rundown Schedule" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
-            <!-- 3. Gift Exchange -->
+            <!-- Gift Exchange -->
             <div id="section-gift" class="scroll-mt-6">
                 <img src="./IMG_3905.jpeg" alt="Gift Exchange" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
-            <!-- 4. Food -->
+            <!-- Food -->
             <div id="section-food" class="scroll-mt-6">
                 <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
-            <!-- 5. Drinks -->
+            <!-- Drinks -->
             <div id="section-drinks" class="scroll-mt-6">
                 <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-xl shadow-lg" loading="lazy" decoding="async">
             </div>
 
-            <!-- 6. Location -->
+            <!-- Location -->
             <div id="section-location" class="scroll-mt-6 space-y-3">
                 <div class="text-xs sm:text-sm text-[#f6f0ea] font-mono leading-relaxed px-2 text-center wine-card p-3 rounded-xl shadow-sm">
                     <div class="font-bold text-sm text-[#f3d9a4] serif-font italic text-base">官邸 the GUANDI</div>
