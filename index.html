@@ -16,15 +16,14 @@
         }
         .script-font { font-family: 'Great Vibes', cursive; }
         .serif-font { font-family: 'Cormorant Garamond', serif; }
+        
+        /* 保留上方主視覺與倒數計時的精緻外框 */
         .retro-card {
             background-color: #fbf8f5;
             border: 1px solid #e7dcd1;
             box-shadow: 0 10px 30px rgba(120, 90, 70, 0.08);
         }
-        .info-section {
-            background: #fbf8f5;
-            border: 1px solid #e7dcd1;
-        }
+        
         .action-btn {
             background-color: #a3333d;
             color: #ffffff;
@@ -33,6 +32,7 @@
             letter-spacing: 0.08em;
         }
         .action-btn:hover { background-color: #822831; }
+
         .menu-btn-img {
             width: 100%;
             height: auto;
@@ -125,56 +125,56 @@
             </a>
         </div>
 
-        <!-- 👇 下方詳細內容區塊 (已完全拔除所有文字標題，只留純圖片與地圖) -->
-        <div class="space-y-4 pt-2">
+        <!-- 👇 下方詳細內容區塊 (已移除所有白色外框，直接融入網頁背景) -->
+        <div class="space-y-6 pt-2">
             
             <!-- 1. Intro -->
-            <div id="section-intro" class="info-section rounded-xl p-3 shadow-sm scroll-mt-6">
-                <img src="./IMG_3908.jpeg" alt="Intro" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+            <div id="section-intro" class="scroll-mt-6">
+                <img src="./IMG_3908.jpeg" alt="Intro" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
             </div>
 
             <!-- 2. Rundown -->
-            <div id="section-rundown" class="info-section rounded-xl p-3 shadow-sm scroll-mt-6">
-                <img src="./IMG_3907.jpeg" alt="Rundown Schedule" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+            <div id="section-rundown" class="scroll-mt-6">
+                <img src="./IMG_3907.jpeg" alt="Rundown Schedule" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
             </div>
 
             <!-- 3. Gift Exchange -->
-            <div id="section-gift" class="info-section rounded-xl p-3 shadow-sm scroll-mt-6">
-                <img src="./IMG_3905.jpeg" alt="Gift Exchange" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+            <div id="section-gift" class="scroll-mt-6">
+                <img src="./IMG_3905.jpeg" alt="Gift Exchange" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
             </div>
 
             <!-- 4. Food -->
-            <div id="section-food" class="info-section rounded-xl p-3 shadow-sm scroll-mt-6">
-                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+            <div id="section-food" class="scroll-mt-6">
+                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
             </div>
 
             <!-- 5. Drinks -->
-            <div id="section-drinks" class="info-section rounded-xl p-3 shadow-sm scroll-mt-6">
-                <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+            <div id="section-drinks" class="scroll-mt-6">
+                <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
             </div>
 
             <!-- 6. Location -->
-            <div id="section-location" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6 space-y-3">
-                <div class="text-xs text-[#5c4a42] font-mono leading-relaxed px-1">
-                    <div class="font-bold">官邸 the GUANDI</div>
+            <div id="section-location" class="scroll-mt-6 space-y-3">
+                <div class="text-xs sm:text-sm text-[#5c4a42] font-mono leading-relaxed px-1 text-center bg-[#fbf8f5] p-3 rounded-xl border border-[#e7dcd1] shadow-sm">
+                    <div class="font-bold text-sm text-[#a3333d] serif-font italic text-base">官邸 the GUANDI</div>
                     <div>111臺北市士林區福林路中山北路五段476號8樓之8B1</div>
                 </div>
-                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
                 <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
                    target="_blank" 
-                   class="action-btn w-full py-2.5 px-4 rounded-xl shadow-sm text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
+                   class="action-btn w-full py-3 px-4 rounded-xl shadow-md text-xs sm:text-sm font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
-                    <span class="serif-font italic text-sm tracking-widest">Open Google Maps</span>
+                    <span class="serif-font italic text-base tracking-widest">Open Google Maps</span>
                 </a>
             </div>
 
         </div>
 
         <!-- 頁尾資訊 -->
-        <div class="text-center text-xs text-[#8c786d] serif-font italic pt-4">
+        <div class="text-center text-xs text-[#8c786d] serif-font italic pt-6">
             Looking forward to celebrating with you.
         </div>
     </main>
