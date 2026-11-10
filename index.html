@@ -281,12 +281,12 @@
 
                     let contentHtml = '';
 
-                    // 💡 如果分類是 Food，直接顯示你指定的菜單圖片，不讀取試算表文字
+                    // 💡 如果分類是 Food，直接顯示你指定的全新圖片，不讀取試算表文字
                     if (lowerCat.includes('food')) {
                         contentHtml = `
                             <h3 class="script-font text-2xl text-[#a3333d] mb-3 pb-1 border-b border-[#ebdcd0] flex items-center">${giftSvg}<span class="ml-1">${cat}</span></h3>
                             <div class="space-y-2">
-                                <img src="./Food_Menu.webp" alt="Food Menu" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
+                                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
                             </div>
                         `;
                     } else {
