@@ -11,27 +11,31 @@
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f6f0ea;
-            color: #2c221e;
+            /* 聖誕奢華酒紅色背景漸層 */
+            background: linear-gradient(135deg, #4a151b 0%, #350e12 100%);
+            color: #f6f0ea;
+            min-height: 100vh;
         }
         .script-font { font-family: 'Great Vibes', cursive; }
         .serif-font { font-family: 'Cormorant Garamond', serif; }
         
-        /* 保留上方主視覺與倒數計時的精緻外框 */
-        .retro-card {
-            background-color: #fbf8f5;
-            border: 1px solid #e7dcd1;
-            box-shadow: 0 10px 30px rgba(120, 90, 70, 0.08);
+        /* 酒紅色風格卡片與容器 */
+        .wine-card {
+            background-color: rgba(61, 20, 25, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.3); /* 金色微光邊框 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
         }
-        
+
         .action-btn {
-            background-color: #a3333d;
-            color: #ffffff;
+            background-color: #d4af37; /* 質感金色按鈕 */
+            color: #350e12;
             transition: all 0.2s ease;
             font-family: 'Cormorant Garamond', serif;
             letter-spacing: 0.08em;
+            font-weight: 600;
         }
-        .action-btn:hover { background-color: #822831; }
+        .action-btn:hover { background-color: #e6c55c; }
 
         .menu-btn-img {
             width: 100%;
@@ -39,7 +43,7 @@
             object-fit: contain;
             display: block;
             transition: transform 0.15s ease;
-            filter: drop-shadow(0 2px 4px rgba(120, 90, 70, 0.15));
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
         .menu-btn-img:active {
             transform: scale(0.97);
@@ -52,41 +56,41 @@
     <main class="w-full max-w-md relative z-10 flex flex-col space-y-6 pb-16 pt-4">
         
         <!-- 頂部副標題 -->
-        <div class="text-center text-xl sm:text-2xl text-[#a3333d] script-font font-normal tracking-wide">
+        <div class="text-center text-xl sm:text-2xl text-[#f3d9a4] script-font font-normal tracking-wide">
             ~ Naughty or Nice? ~
         </div>
 
         <!-- 主視覺封面圖片 -->
-        <div class="retro-card rounded-2xl p-2 sm:p-3 shadow-xl overflow-hidden text-center">
-            <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[#e7dcd1]" fetchpriority="high" decoding="async">
+        <div class="wine-card rounded-2xl p-2 sm:p-3 shadow-xl overflow-hidden text-center">
+            <img src="./IMG_3838.jpeg" alt="Christmas Party Invitation" class="w-full h-auto rounded-xl shadow-sm border border-[rgba(212,175,55,0.2)]" fetchpriority="high" decoding="async">
         </div>
 
         <!-- ⏳ 精緻倒數計時區塊 -->
-        <div class="retro-card rounded-2xl p-5 text-center shadow-md relative overflow-hidden">
-            <div class="script-font text-2xl sm:text-3xl text-[#a3333d] font-normal mb-3">
+        <div class="wine-card rounded-2xl p-5 text-center shadow-md relative overflow-hidden">
+            <div class="script-font text-2xl sm:text-3xl text-[#f3d9a4] font-normal mb-3">
                 Countdown to Party
             </div>
             <div class="flex items-center justify-center space-x-3 mb-4">
-                <div class="h-[1px] w-16 bg-[#e0d2c5]"></div>
-                <span class="text-[#a3333d] text-xs">✦</span>
-                <div class="h-[1px] w-16 bg-[#e0d2c5]"></div>
+                <div class="h-[1px] w-16 bg-[rgba(212,175,55,0.3)]"></div>
+                <span class="text-[#f3d9a4] text-xs">✦</span>
+                <div class="h-[1px] w-16 bg-[rgba(212,175,55,0.3)]"></div>
             </div>
             <div class="grid grid-cols-4 gap-1 text-center items-center py-1">
-                <div class="border-r border-[#e7dcd1] pr-1">
-                    <div id="countdown-days" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
-                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Days</div>
+                <div class="border-r border-[rgba(212,175,55,0.2)] pr-1">
+                    <div id="countdown-days" class="serif-font text-2xl sm:text-3xl font-semibold text-[#f6f0ea]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#d4af37] italic tracking-wider mt-0.5">Days</div>
                 </div>
-                <div class="border-r border-[#e7dcd1] pr-1">
-                    <div id="countdown-hrs" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
-                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Hrs</div>
+                <div class="border-r border-[rgba(212,175,55,0.2)] pr-1">
+                    <div id="countdown-hrs" class="serif-font text-2xl sm:text-3xl font-semibold text-[#f6f0ea]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#d4af37] italic tracking-wider mt-0.5">Hrs</div>
                 </div>
-                <div class="border-r border-[#e7dcd1] pr-1">
-                    <div id="countdown-mins" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
-                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Mins</div>
+                <div class="border-r border-[rgba(212,175,55,0.2)] pr-1">
+                    <div id="countdown-mins" class="serif-font text-2xl sm:text-3xl font-semibold text-[#f6f0ea]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#d4af37] italic tracking-wider mt-0.5">Mins</div>
                 </div>
                 <div>
-                    <div id="countdown-secs" class="serif-font text-2xl sm:text-3xl font-semibold text-[#2c221e]">00</div>
-                    <div class="serif-font text-xs sm:text-sm text-[#8c786d] italic tracking-wider mt-0.5">Secs</div>
+                    <div id="countdown-secs" class="serif-font text-2xl sm:text-3xl font-semibold text-[#f6f0ea]">00</div>
+                    <div class="serif-font text-xs sm:text-sm text-[#d4af37] italic tracking-wider mt-0.5">Secs</div>
                 </div>
             </div>
         </div>
@@ -95,7 +99,7 @@
         <div class="text-center">
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Christmas+Party+%40The+Guandi&dates=20261219T100000Z/20261219T160000Z&details=%E5%A5%BD%E5%8F%8B%E6%B4%BE%E5%B0%8D%E6%AD%A1%E8%BF%8E%E5%85%89%E8%87%A8%EF%BC%81&location=111%E8%87%BA%E5%8C%97%E5%B8%82%E5%A3%AB%E6%9E%97%E5%8D%80%E7%A6%8F%E6%9E%97%E9%87%8C%E4%B8%AD%E5%B1%B1%E5%8C%97%E8%B7%AF%E4%BA%94%E6%AE%B5476%E8%B2%938%E6%A8%93%E4%B9%8B8B1" 
                target="_blank" 
-               class="action-btn w-full py-3 px-4 rounded-xl shadow-sm text-sm font-semibold tracking-wider uppercase flex items-center justify-center space-x-2">
+               class="action-btn w-full py-3 px-4 rounded-xl shadow-sm text-sm tracking-wider uppercase flex items-center justify-center space-x-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
@@ -125,44 +129,44 @@
             </a>
         </div>
 
-        <!-- 👇 下方詳細內容區塊 (已移除所有白色外框，直接融入網頁背景) -->
+        <!-- 👇 下方詳細內容區塊 (無縫融入酒紅色背景) -->
         <div class="space-y-6 pt-2">
             
             <!-- 1. Intro -->
             <div id="section-intro" class="scroll-mt-6">
-                <img src="./IMG_3908.jpeg" alt="Intro" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
+                <img src="./IMG_3908.jpeg" alt="Intro" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
             </div>
 
             <!-- 2. Rundown -->
             <div id="section-rundown" class="scroll-mt-6">
-                <img src="./IMG_3907.jpeg" alt="Rundown Schedule" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
+                <img src="./IMG_3907.jpeg" alt="Rundown Schedule" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
             </div>
 
             <!-- 3. Gift Exchange -->
             <div id="section-gift" class="scroll-mt-6">
-                <img src="./IMG_3905.jpeg" alt="Gift Exchange" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
+                <img src="./IMG_3905.jpeg" alt="Gift Exchange" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
             </div>
 
             <!-- 4. Food -->
             <div id="section-food" class="scroll-mt-6">
-                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
+                <img src="./4A48B14B-A898-4BE5-8255-F83D0036FFCF.png" alt="Food Menu" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
             </div>
 
             <!-- 5. Drinks -->
             <div id="section-drinks" class="scroll-mt-6">
-                <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
+                <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
             </div>
 
             <!-- 6. Location -->
             <div id="section-location" class="scroll-mt-6 space-y-3">
-                <div class="text-xs sm:text-sm text-[#5c4a42] font-mono leading-relaxed px-1 text-center bg-[#fbf8f5] p-3 rounded-xl border border-[#e7dcd1] shadow-sm">
-                    <div class="font-bold text-sm text-[#a3333d] serif-font italic text-base">官邸 the GUANDI</div>
+                <div class="text-xs sm:text-sm text-[#f6f0ea] font-mono leading-relaxed px-1 text-center wine-card p-3 rounded-xl shadow-sm">
+                    <div class="font-bold text-sm text-[#f3d9a4] serif-font italic text-base">官邸 the GUANDI</div>
                     <div>111臺北市士林區福林路中山北路五段476號8樓之8B1</div>
                 </div>
-                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-xl shadow-md border border-[#e7dcd1]" loading="lazy" decoding="async">
+                <img src="./Map.webp" alt="Location Map" class="w-full h-auto rounded-xl shadow-md border border-[rgba(212,175,55,0.3)]" loading="lazy" decoding="async">
                 <a href="https://maps.app.goo.gl/yoBPjXKwwhUPjyoN6?g_st=ic" 
                    target="_blank" 
-                   class="action-btn w-full py-3 px-4 rounded-xl shadow-md text-xs sm:text-sm font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
+                   class="action-btn w-full py-3 px-4 rounded-xl shadow-md text-xs sm:text-sm tracking-widest uppercase flex items-center justify-center space-x-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -174,7 +178,7 @@
         </div>
 
         <!-- 頁尾資訊 -->
-        <div class="text-center text-xs text-[#8c786d] serif-font italic pt-6">
+        <div class="text-center text-xs text-[#d4af37] serif-font italic pt-6 opacity-90">
             Looking forward to celebrating with you.
         </div>
     </main>
