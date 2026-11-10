@@ -33,33 +33,6 @@
             letter-spacing: 0.08em;
         }
         .action-btn:hover { background-color: #822831; }
-        .countdown-track {
-            position: relative;
-            height: 24px;
-            background-color: #f0e6dc;
-            border: 1px solid #d9ccbe;
-            border-radius: 9999px;
-            overflow: visible;
-            margin-top: 18px;
-            margin-bottom: 6px;
-        }
-        .countdown-bar-fill {
-            background: linear-gradient(90deg, #a3333d 0%, #c2414d 100%);
-            height: 100%;
-            width: 0%;
-            transition: width 1s linear;
-            border-radius: 9999px;
-        }
-        .running-santa-img {
-            position: absolute;
-            top: -34px;
-            transform: translateX(-50%);
-            width: 48px;
-            height: auto;
-            transition: left 1s linear;
-            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
-            z-index: 20;
-        }
         .menu-btn-img {
             width: 100%;
             height: auto;
@@ -152,7 +125,7 @@
             </a>
         </div>
 
-        <!-- 👇 下方詳細資訊區塊 (全部寫死) -->
+        <!-- 👇 下方詳細資訊區塊 -->
         <div class="space-y-4 pt-2">
             
             <!-- 1. Intro 區塊 -->
@@ -190,7 +163,7 @@
                 </div>
             </div>
 
-            <!-- 4. Food 區塊 (顯示指定精美菜單圖片) -->
+            <!-- 4. Food 區塊 -->
             <div id="section-food" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
                 <h3 class="script-font text-2xl text-[#a3333d] mb-3 pb-1 border-b border-[#ebdcd0] flex items-center">
                     <span class="ml-1">Food</span>
@@ -200,18 +173,17 @@
                 </div>
             </div>
 
-            <!-- 5. Drinks 區塊 -->
+            <!-- 5. Drinks 區塊 (已移除文字，改為顯示 IMG_3903.jpeg) -->
             <div id="section-drinks" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
-                <h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">
+                <h3 class="script-font text-2xl text-[#a3333d] mb-3 pb-1 border-b border-[#ebdcd0] flex items-center">
                     <span class="ml-1">Drinks</span>
                 </h3>
-                <div class="space-y-1.5 text-xs text-[#5c4a42] font-mono leading-relaxed pl-2">
-                    <div class="py-0.5">提供各式特調飲品與微醺酒水</div>
-                    <div class="py-0.5">盡情暢飲、享受微醺聖誕夜</div>
+                <div class="space-y-2">
+                    <img src="./IMG_3903.jpeg" alt="Drinks Menu" class="w-full h-auto rounded-lg shadow-sm border border-[#e7dcd1]" loading="lazy" decoding="async">
                 </div>
             </div>
 
-            <!-- 6. Location 區塊 (帶入地圖圖片與導航按鈕) -->
+            <!-- 6. Location 區塊 -->
             <div id="section-location" class="info-section rounded-xl p-4 shadow-sm scroll-mt-6">
                 <h3 class="script-font text-2xl text-[#a3333d] mb-2 pb-1 border-b border-[#ebdcd0] flex items-center">
                     <span class="ml-1">Location</span>
