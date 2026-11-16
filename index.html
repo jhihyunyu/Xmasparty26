@@ -37,25 +37,42 @@
         }
         .action-btn:hover { background-color: #e6c55c; }
 
+        /* 強制設定橫向滑動按鈕尺寸，確保一定變大 */
+        .nav-scroll-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 4px 2px 10px 2px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav-scroll-row::-webkit-scrollbar {
+            display: none;
+        }
+        .nav-scroll-row {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .nav-btn-item {
+            width: 155px;
+            min-width: 155px;
+            max-width: 155px;
+            flex-shrink: 0;
+            display: block;
+        }
+
         .menu-btn-img {
             width: 100%;
             height: auto;
             object-fit: contain;
             display: block;
             transition: transform 0.15s ease;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
         }
         .menu-btn-img:active {
-            transform: scale(0.97);
-        }
-
-        /* 隱藏捲軸但保持滾動功能 */
-        .scrollbar-none::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-none {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            transform: scale(0.96);
         }
     </style>
 </head>
@@ -116,21 +133,21 @@
             </a>
         </div>
 
-        <!-- 👇 導覽按鈕區塊 (縮小並整齊排列在同一排) -->
-        <div class="flex justify-between items-center space-x-1.5 overflow-x-auto pb-2 px-1 scrollbar-none pt-1">
-            <a href="#section-intro" class="w-[72px] flex-shrink-0 block overflow-hidden">
+        <!-- 👇 導覽按鈕區塊 (使用原生 CSS 強制放大至 155px 寬度，同一排左右滑動) -->
+        <div class="nav-scroll-row">
+            <a href="#section-intro" class="nav-btn-item">
                 <img src="./IMG_4240.png" alt="Dress Code" class="menu-btn-img" loading="lazy" decoding="async">
             </a>
-            <a href="#section-rundown" class="w-[72px] flex-shrink-0 block overflow-hidden">
+            <a href="#section-rundown" class="nav-btn-item">
                 <img src="./Rundown.webp" alt="Rundown" class="menu-btn-img" loading="lazy" decoding="async">
             </a>
-            <a href="#section-gift" class="w-[72px] flex-shrink-0 block overflow-hidden">
+            <a href="#section-gift" class="nav-btn-item">
                 <img src="./Gift_Exchange.webp" alt="Gift Exchange" class="menu-btn-img" loading="lazy" decoding="async">
             </a>
-            <a href="#section-food" class="w-[72px] flex-shrink-0 block overflow-hidden">
+            <a href="#section-food" class="nav-btn-item">
                 <img src="./IMG_3932.png" alt="Food & Drinks" class="menu-btn-img" loading="lazy" decoding="async">
             </a>
-            <a href="#section-location" class="w-[72px] flex-shrink-0 block overflow-hidden">
+            <a href="#section-location" class="nav-btn-item">
                 <img src="./Location.webp" alt="Location" class="menu-btn-img" loading="lazy" decoding="async">
             </a>
         </div>
